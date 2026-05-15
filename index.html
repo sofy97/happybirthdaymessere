@@ -58,7 +58,7 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
 .nf2{transform-origin:center bottom;animation:numFlicker .54s ease-in-out infinite alternate}
 .ng2{transform-origin:center center;animation:numGlow .54s ease-in-out infinite alternate}
 
-/* SCALATORE — posizionato sopra la torta */
+/* SCALATORE */
 #climberSvg{
   position:absolute;
   bottom:0;
@@ -103,7 +103,9 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
         <div class="candle cc" id="cn2"><div class="glow-ring" style="--fd:.5s"></div><div class="flame" style="--fd:.5s"></div></div>
       </div>
 
+      <!-- CANDELINE NUMERALI: 3 e 2 -->
       <div class="number-candles" id="numCandles">
+        <!-- cifra 3 -->
         <svg width="40" height="72" viewBox="0 0 40 72" fill="none" xmlns="http://www.w3.org/2000/svg">
           <ellipse class="ng" cx="20" cy="8" rx="12" ry="12" fill="rgba(80,160,255,0.32)"/>
           <path class="nf" d="M20 1 Q24 5 22.5 9 Q26 6 25 12 Q22.5 16 20 15 Q17.5 16 15 12 Q14 6 17.5 9 Q16 5 20 1Z" fill="#ffcc44"/>
@@ -113,15 +115,15 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
           <rect x="12" y="52" width="16" height="6" rx="3" fill="#1a5fa0"/>
           <rect x="8" y="58" width="24" height="5" rx="2.5" fill="#c9a96e"/>
         </svg>
-        <svg width="30" height="72" viewBox="0 0 30 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse class="ng2" cx="15" cy="8" rx="12" ry="12" fill="rgba(80,160,255,0.32)"/>
-          <path class="nf2" d="M15 1 Q19 5 17.5 9 Q21 6 20 12 Q17.5 16 15 15 Q12.5 16 10 12 Q9 6 12.5 9 Q11 5 15 1Z" fill="#ffcc44"/>
-          <path class="nf2" d="M15 4 Q17 7.5 16 11 Q15 13 14 11 Q13 7.5 15 4Z" fill="#fff7e0"/>
-          <path d="M8 24 L12 19 L17 19" stroke="#2a7fd4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <line x1="15" y1="19" x2="15" y2="52" stroke="#2a7fd4" stroke-width="7" stroke-linecap="round"/>
-          <line x1="7" y1="52" x2="23" y2="52" stroke="#2a7fd4" stroke-width="5" stroke-linecap="round"/>
-          <rect x="6" y="52" width="18" height="6" rx="3" fill="#1a5fa0"/>
-          <rect x="3" y="58" width="24" height="5" rx="2.5" fill="#c9a96e"/>
+        <!-- cifra 2 -->
+        <svg width="34" height="72" viewBox="0 0 34 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse class="ng2" cx="17" cy="8" rx="12" ry="12" fill="rgba(80,160,255,0.32)"/>
+          <path class="nf2" d="M17 1 Q21 5 19.5 9 Q23 6 22 12 Q19.5 16 17 15 Q14.5 16 12 12 Q11 6 14.5 9 Q13 5 17 1Z" fill="#ffcc44"/>
+          <path class="nf2" d="M17 4 Q19 7.5 18 11 Q17 13 16 11 Q15 7.5 17 4Z" fill="#fff7e0"/>
+          <!-- corpo del "2" -->
+          <path d="M7 22 Q7 15 17 15 Q27 15 27 22 Q27 28 17 34 Q11 38 7 43 L27 43" stroke="#2a7fd4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <rect x="5" y="48" width="22" height="6" rx="3" fill="#1a5fa0"/>
+          <rect x="3" y="54" width="28" height="5" rx="2.5" fill="#c9a96e"/>
         </svg>
       </div>
 
@@ -140,159 +142,107 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
       </div>
       <div class="plate"></div>
 
-
       <svg id="climberSvg" width="60" height="100" viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg">
 
         <!-- ===== VISTA DI SCHIENA ===== -->
         <g id="backView">
-
-          <!-- GAMBE  -->
-          <!-- gamba dx bassa, leggermente indietro -->
+          <!-- GAMBE -->
           <path d="M30 65 Q33 70 34 80 Q34 88 33 92" stroke="#2d2d2d" stroke-width="7" stroke-linecap="round" fill="none"/>
-          <!-- gamba sx alta, spinta in avanti/su -->
           <path d="M26 63 Q22 68 20 76 Q18 84 18 90" stroke="#2d2d2d" stroke-width="7" stroke-linecap="round" fill="none"/>
-
           <!-- SCARPETTE -->
-          <!-- piede dx -->
           <ellipse cx="33" cy="93" rx="6" ry="3" fill="#8b1a1a" transform="rotate(-5 33 93)"/>
           <rect x="28" y="90" width="10" height="5" rx="2" fill="#6b1414"/>
-          <!-- piede sx -->
           <ellipse cx="18" cy="91" rx="6" ry="3" fill="#8b1a1a" transform="rotate(10 18 91)"/>
           <rect x="13" y="88" width="10" height="5" rx="2" fill="#6b1414"/>
-
-          <!-- IMBRAGO >
-          <!-- cintura vita -->
+          <!-- IMBRAGO -->
           <rect x="18" y="59" width="24" height="4" rx="2" fill="#c9a96e" opacity=".9"/>
-          <!-- cosciali -->
           <path d="M20 63 Q18 68 19 74" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".8"/>
           <path d="M38 63 Q40 68 39 74" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".8"/>
-          <!-- moschettone centrale -->
           <ellipse cx="29" cy="62" rx="3" ry="4" stroke="#aaa" stroke-width="1.5" fill="none"/>
           <rect x="27.5" y="61" width="3" height="2" rx="1" fill="#bbb"/>
-
-          <!-- TORSO >
-          <!-- corpo principale giacca -->
+          <!-- TORSO -->
           <path d="M19 38 Q17 45 17 55 Q17 62 19 64 L29 65 L39 63 Q41 61 41 55 Q41 45 39 38 Z" fill="#4a5a3a"/>
-          <!-- pannello dorsale più scuro -->
           <path d="M22 40 Q20 47 21 57 L29 58 L37 57 Q38 47 36 40 Z" fill="#3a4a2e"/>
-          <!-- tasca verticale a sinistra -->
           <rect x="20" y="46" width="5" height="8" rx="1.5" fill="#3a4a2e" stroke="#5a6a4a" stroke-width=".8"/>
-          <!-- zip centrale visibile -->
           <line x1="29" y1="38" x2="29" y2="63" stroke="#5a6a4a" stroke-width="1" stroke-dasharray="2 2"/>
-
-          <!-- ZAINO ->
-          <!-- corpo zaino -->
+          <!-- ZAINO -->
           <path d="M14 37 Q11 40 11 52 Q11 60 13 63 Q18 64 19 62 Q18 55 18 45 Q18 40 19 37 Z" fill="#2d3a7a"/>
-          <!-- tasca frontale zaino -->
           <rect x="11.5" y="43" width="7" height="10" rx="2" fill="#253068"/>
-          <!-- bretelle/spallacci -->
           <path d="M19 37 Q17 33 16 30 Q17 28 19 29 Q20 32 19 37" fill="#253068"/>
-          <!-- picozza agganciata lateralmente -->
           <line x1="12" y1="36" x2="10" y2="22" stroke="#8a7a5a" stroke-width="2" stroke-linecap="round"/>
           <path d="M9 22 Q6 19 8 17 Q10 16 11 19 Q12 22 10 23 Z" fill="#c9a96e"/>
-          <!-- punta bassa picozza -->
           <path d="M10 23 Q9 26 10 28" stroke="#8a7a5a" stroke-width="1.5" stroke-linecap="round"/>
-
-          <!-- BRACCIA — posizione asimmetrica da scalatore in movimento -->
-          <!-- braccio dx alzato (si aggrappa in alto a dx) -->
+          <!-- BRACCIA -->
           <path d="M39 42 Q44 36 46 28" stroke="#4a5a3a" stroke-width="6" stroke-linecap="round" fill="none"/>
-          <!-- guanto dx -->
           <ellipse cx="46.5" cy="26" rx="4" ry="3.5" fill="#1a1a1a"/>
-          <!-- dita guanto -->
           <path d="M44 24 Q43 21 45 21 Q47 21 46 24" stroke="#333" stroke-width="1.2" fill="none"/>
-          <!-- braccio sx abbassato (posizione alternata) -->
           <path d="M19 42 Q15 46 12 50" stroke="#4a5a3a" stroke-width="6" stroke-linecap="round" fill="none"/>
-          <!-- guanto sx -->
           <ellipse cx="11" cy="51.5" rx="4" ry="3.5" fill="#1a1a1a"/>
-
-          <!-- CORDA — filo sottile che scende -->
+          <!-- CORDA -->
           <path d="M29 62 Q31 70 29 78 Q27 86 30 94" stroke="rgba(255,200,100,.5)" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="3 2"/>
-
           <!-- COLLO -->
           <rect x="25" y="30" width="8" height="9" rx="3" fill="#c89060"/>
-
-          <!-- TESTA — proporzioni adulte realistiche -->
+          <!-- TESTA -->
           <ellipse cx="29" cy="23" rx="9" ry="10" fill="#c89060"/>
-
-          <!-- orecchie -->
           <ellipse cx="20" cy="24" rx="2.5" ry="3.5" fill="#b87848"/>
           <ellipse cx="38" cy="24" rx="2.5" ry="3.5" fill="#b87848"/>
-
-          <!-- CAPELLI NERI — visibili sotto il berretto -->
-          <path d="M20 20 Q20 28 22 30 L21 31 Q19 28 19 23 Z" fill="#1a0f00"/>
-          <path d="M38 20 Q38 28 36 30 L37 31 Q39 28 39 23 Z" fill="#1a0f00"/>
-          <path d="M20 20 Q21 30 29 31 Q37 30 38 20 Q36 33 29 33 Q22 33 20 20Z" fill="#1a0f00"/>
-
-          <!-- BERRETTO BLU tecnico — con visiera -->
+          <!-- CAPELLI NERI visibili sotto il berretto (schiena) -->
+          <path d="M20 20 Q19 26 20 31 Q21 33 22 32" fill="#1a0f00" stroke="#1a0f00" stroke-width="3" stroke-linecap="round"/>
+          <path d="M38 20 Q39 26 38 31 Q37 33 36 32" fill="#1a0f00" stroke="#1a0f00" stroke-width="3" stroke-linecap="round"/>
+          <path d="M20 28 Q29 32 38 28" stroke="#1a0f00" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <!-- BERRETTO BLU -->
           <path d="M20 19 Q20 11 29 10 Q38 11 38 19 Q36 21 29 21 Q22 21 20 19Z" fill="#1565c0"/>
-          <!-- pannello frontale berretto -->
           <path d="M21 18 Q25 14 29 13 Q33 14 37 18 Q33 20 29 20 Q25 20 21 18Z" fill="#1976d2"/>
-          <!-- pompon/logo -->
           <circle cx="29" cy="11" r="2.5" fill="#42a5f5"/>
-          <!-- visiera -->
           <path d="M20 19 Q18 20 17 21 Q19 23 23 22 Q22 21 20 19Z" fill="#0d47a1"/>
-          <!-- fascia paraorecchie -->
           <path d="M20 19 Q19 22 20 26" stroke="#0d47a1" stroke-width="3" stroke-linecap="round" fill="none"/>
           <path d="M38 19 Q39 22 38 26" stroke="#0d47a1" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <!-- logo/patch sul berretto -->
           <circle cx="29" cy="16" r="3" fill="none" stroke="#42a5f5" stroke-width="1"/>
           <path d="M27.5 16 L29 14.5 L30.5 16 L29 17.5Z" fill="#42a5f5"/>
         </g>
 
-        <!-- ===== VISTA FRONTALE (nascosta inizialmente) ===== -->
+        <!-- ===== VISTA FRONTALE ===== -->
         <g id="frontView" opacity="0">
-
-          <!-- GAMBE distese, posizione da triumfo -->
+          <!-- GAMBE -->
           <path d="M26 65 Q24 73 23 82 Q22 88 22 93" stroke="#2d2d2d" stroke-width="7" stroke-linecap="round" fill="none"/>
           <path d="M32 65 Q34 73 35 82 Q36 88 36 93" stroke="#2d2d2d" stroke-width="7" stroke-linecap="round" fill="none"/>
-
-          <!-- scarpette fronte -->
           <ellipse cx="22" cy="94" rx="6" ry="3" fill="#8b1a1a"/>
           <rect x="17" y="91" width="10" height="5" rx="2" fill="#6b1414"/>
           <ellipse cx="36" cy="94" rx="6" ry="3" fill="#8b1a1a"/>
           <rect x="31" y="91" width="10" height="5" rx="2" fill="#6b1414"/>
-
-          <!-- imbrago frontale -->
+          <!-- IMBRAGO -->
           <rect x="18" y="59" width="24" height="4" rx="2" fill="#c9a96e" opacity=".9"/>
           <path d="M20 63 Q18 68 19 74" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".8"/>
           <path d="M38 63 Q40 68 39 74" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".8"/>
           <ellipse cx="29" cy="62" rx="3" ry="4" stroke="#aaa" stroke-width="1.5" fill="none"/>
           <rect x="27.5" y="61" width="3" height="2" rx="1" fill="#bbb"/>
-
-          <!-- TORSO frontale — giacca con dettagli -->
+          <!-- TORSO frontale -->
           <path d="M18 38 Q16 45 16 55 Q16 62 18 64 L29 65 L40 63 Q42 61 42 55 Q42 45 40 38 Z" fill="#4a5a3a"/>
-          <!-- zip centrale -->
           <line x1="29" y1="38" x2="29" y2="64" stroke="#6a7a5a" stroke-width="1.5" stroke-dasharray="2 2"/>
-          <!-- logo/patch petto sx -->
           <circle cx="22" cy="46" r="4" fill="none" stroke="#6a8a5a" stroke-width="1"/>
           <path d="M20.5 46 L22 44 L23.5 46 L22 48Z" fill="#6a8a5a"/>
-          <!-- tasca petto dx con zip -->
           <rect x="31" y="43" width="7" height="6" rx="1.5" fill="#3a4a2e" stroke="#5a6a4a" stroke-width=".8"/>
           <line x1="31" y1="44" x2="38" y2="44" stroke="#6a7a5a" stroke-width=".8"/>
-
-          <!-- BRACCIA ALZATE — trionfo, entrambe su -->
-          <!-- braccio sx alzato a V -->
+          <!-- BRACCIA alzate a V -->
           <path d="M18 42 Q10 34 6 22" stroke="#4a5a3a" stroke-width="6" stroke-linecap="round" fill="none"/>
           <ellipse cx="5" cy="20" rx="4" ry="3.5" fill="#1a1a1a"/>
-          <!-- indice che punta su -->
           <rect x="3.5" y="11" width="3" height="9" rx="1.5" fill="#1a1a1a"/>
           <ellipse cx="5" cy="11" rx="2" ry="2" fill="#2a2a2a"/>
-
-          <!-- braccio dx alzato a V -->
           <path d="M40 42 Q48 34 52 22" stroke="#4a5a3a" stroke-width="6" stroke-linecap="round" fill="none"/>
           <ellipse cx="53" cy="20" rx="4" ry="3.5" fill="#1a1a1a"/>
           <rect x="51.5" y="11" width="3" height="9" rx="1.5" fill="#1a1a1a"/>
           <ellipse cx="53" cy="11" rx="2" ry="2" fill="#2a2a2a"/>
-
           <!-- COLLO -->
           <rect x="25" y="30" width="8" height="9" rx="3" fill="#c89060"/>
-
           <!-- TESTA frontale -->
           <ellipse cx="29" cy="22" rx="9" ry="10" fill="#c89060"/>
           <ellipse cx="20" cy="23" rx="2.5" ry="3.5" fill="#b87848"/>
           <ellipse cx="38" cy="23" rx="2.5" ry="3.5" fill="#b87848"/>
-
-          <!-- berretto blu frontale -->
+          <!-- CAPELLI NERI ben visibili sotto il berretto (frontale) -->
+          <path d="M20 18 Q18 24 19 30 Q20 32 22 31" fill="#1a0f00" stroke="#1a0f00" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M38 18 Q40 24 39 30 Q38 32 36 31" fill="#1a0f00" stroke="#1a0f00" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M21 28 Q29 32 37 28" stroke="#1a0f00" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <!-- BERRETTO BLU frontale -->
           <path d="M20 18 Q20 10 29 9 Q38 10 38 18 Q36 20 29 20 Q22 20 20 18Z" fill="#1565c0"/>
           <path d="M21 17 Q25 13 29 12 Q33 13 37 17 Q33 19 29 19 Q25 19 21 17Z" fill="#1976d2"/>
           <circle cx="29" cy="10" r="2.5" fill="#42a5f5"/>
@@ -301,33 +251,23 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
           <path d="M38 18 Q39 21 38 25" stroke="#0d47a1" stroke-width="3" stroke-linecap="round" fill="none"/>
           <circle cx="29" cy="15" r="3" fill="none" stroke="#42a5f5" stroke-width="1"/>
           <path d="M27.5 15 L29 13.5 L30.5 15 L29 16.5Z" fill="#42a5f5"/>
-
-          <!-- capelli neri -->
-          <path d="M20 16 Q19 22 21 27" fill="#1a0f00" stroke="#1a0f00" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M38 16 Q39 22 37 27" fill="#1a0f00" stroke="#1a0f00" stroke-width="2.5" stroke-linecap="round"/>
-
-          <!-- OCCHI adulti, espressivi -->
+          <!-- OCCHI -->
           <ellipse cx="23.5" cy="22" rx="3.5" ry="3" fill="white"/>
           <ellipse cx="34.5" cy="22" rx="3.5" ry="3" fill="white"/>
           <circle cx="24.2" cy="22.5" r="2.2" fill="#1e1208"/>
           <circle cx="35.2" cy="22.5" r="2.2" fill="#1e1208"/>
           <circle cx="24.8" cy="21.5" r="0.9" fill="white"/>
           <circle cx="35.8" cy="21.5" r="0.9" fill="white"/>
-
-          <!-- sopracciglia alzate — espressione di gioia -->
+          <!-- sopracciglia -->
           <path d="M20.5 18.5 Q23.5 17 26.5 18" stroke="#1a0f00" stroke-width="1.5" stroke-linecap="round" fill="none"/>
           <path d="M31.5 18 Q34.5 17 37.5 18.5" stroke="#1a0f00" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-
-          <!-- guance rosse di gioia -->
+          <!-- guance -->
           <ellipse cx="18" cy="26" rx="4" ry="2.5" fill="#f0a0a0" opacity=".4"/>
           <ellipse cx="40" cy="26" rx="4" ry="2.5" fill="#f0a0a0" opacity=".4"/>
-
           <!-- naso -->
           <path d="M28 24 Q29 26 30 24" stroke="#b07848" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-
-          <!-- SORRISO GRANDE trionfante -->
+          <!-- SORRISO -->
           <path d="M22 28 Q29 34 36 28" stroke="#a05838" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <!-- denti appena accennati -->
           <path d="M24 29 Q29 33 34 29 Q29 30 24 29Z" fill="rgba(255,255,255,0.6)"/>
         </g>
       </svg>
@@ -367,24 +307,17 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
   const wrap=document.getElementById('wrap');
   let done=false;
 
-  /* animazione di scalata realistica: braccia e gambe alternati */
   let climbAnim=null;
   function startClimbCycle(){
     if(climbAnim)return;
     const keyframes=[
-      /* appoggio con gamba dx, braccio sx su */
       {transform:'translateX(-50%) rotate(-4deg) skewY(1deg)',offset:0},
-      /* spinta, leggero oscillamento */
       {transform:'translateX(-50%) rotate(0deg) skewY(0deg)',offset:.25},
-      /* appoggio con gamba sx, braccio dx su */
       {transform:'translateX(-50%) rotate(4deg) skewY(-1deg)',offset:.5},
-      /* spinta opposta */
       {transform:'translateX(-50%) rotate(0deg) skewY(0deg)',offset:.75},
       {transform:'translateX(-50%) rotate(-4deg) skewY(1deg)',offset:1},
     ];
-    climbAnim=climberSvg.animate(keyframes,{
-      duration:700,iterations:Infinity,easing:'ease-in-out'
-    });
+    climbAnim=climberSvg.animate(keyframes,{duration:700,iterations:Infinity,easing:'ease-in-out'});
   }
   function stopClimbCycle(){
     if(climbAnim){climbAnim.cancel();climbAnim=null;}
@@ -432,8 +365,6 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
     climberSvg.style.opacity='1';
     climberSvg.style.bottom='0px';
     startClimbCycle();
-
-    /* 4 tappe di salita lungo la torta, più lente e credibili */
     smoothTo(18,800,easeInOut,()=>{
       smoothTo(76,1000,easeInOut,()=>{
         smoothTo(130,900,easeInOut,()=>{
@@ -447,26 +378,19 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
   }
 
   function onSummit(){
-    /* pausa breve in cima, poi rotazione frontale */
     climberSvg.style.transform='translateX(-50%) rotate(0deg)';
-
     setTimeout(()=>{
-      /* flip: schiaccia su X a 0, cambia vista, riapre */
       const rotAnim=climberSvg.animate([
         {transform:'translateX(-50%) scaleX(1)',offset:0},
         {transform:'translateX(-50%) scaleX(0)',offset:.5},
         {transform:'translateX(-50%) scaleX(1)',offset:1},
       ],{duration:600,fill:'forwards',easing:'ease-in-out'});
-
       setTimeout(()=>{
         backView.setAttribute('opacity','0');
         frontView.setAttribute('opacity','1');
       },300);
-
       rotAnim.onfinish=()=>{
         climberSvg.style.transform='translateX(-50%) scaleX(1)';
-
-        /* esultanza: due rimbalzi gioiosi */
         climberSvg.animate([
           {transform:'translateX(-50%) scale(1) rotate(0deg)',offset:0},
           {transform:'translateX(-50%) scale(1.12) rotate(-5deg)',offset:.2},
@@ -474,24 +398,16 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
           {transform:'translateX(-50%) scale(1.06) rotate(-2deg)',offset:.7},
           {transform:'translateX(-50%) scale(1) rotate(0deg)',offset:1},
         ],{duration:800,fill:'forwards',easing:'ease-in-out'});
-
-        /* spegni le vecchie candeline, mostra le numerali */
         candleRow.style.transition='opacity .3s ease';
         candleRow.style.opacity='0';
         setTimeout(()=>{numCandles.classList.add('visible');},200);
-
-        /* coriandoli */
         const rect=cakeArea.getBoundingClientRect();
         const wRect=wrap.getBoundingClientRect();
         burst(rect.left-wRect.left+rect.width/2,rect.top-wRect.top+40);
-
-        /* fade out scalatore */
         setTimeout(()=>{
           climberSvg.style.transition='opacity .9s ease';
           climberSvg.style.opacity='0';
         },1100);
-
-        /* messaggio */
         setTimeout(()=>{msgSection.classList.add('visible');},900);
       };
     },350);
