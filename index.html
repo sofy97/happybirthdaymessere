@@ -1,855 +1,516 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buon Compleanno Michi 🎂</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap');
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    body {
-      min-height: 100vh;
-      background: #0a0812;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      overflow: hidden
-    }
-
-    .bday-wrap {
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative
-    }
-
-    .stars-layer {
-      position: absolute;
-      inset: 0;
-      pointer-events: none
-    }
-
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: #fff;
-      border-radius: 50%;
-      animation: twinkle var(--d, 3s) ease-in-out infinite var(--dl, 0s);
-      opacity: .2
-    }
-
-    @keyframes twinkle {
-
-      0%,
-      100% {
-        opacity: .2;
-        transform: scale(1)
-      }
-
-      50% {
-        opacity: 1;
-        transform: scale(1.6)
-      }
-    }
-
-    .scene {
-      position: relative;
-      z-index: 1;
-      width: 420px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 44px 20px 56px
-    }
-
-    .top-orn {
-      color: #c9a96e;
-      font-size: 20px;
-      letter-spacing: 16px;
-      margin-bottom: 26px;
-      animation: fadeD 1s ease both .3s;
-      opacity: 0
-    }
-
-    .greeting-lbl {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 13px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #c9a96e;
-      margin-bottom: 8px;
-      animation: fadeD 1s ease both .5s;
-      opacity: 0
-    }
-
-    .name-wrap {
-      text-align: center;
-      margin-bottom: 4px;
-      animation: fadeD 1.2s ease both .8s;
-      opacity: 0
-    }
-
-    .name {
-      font-family: 'Playfair Display', serif;
-      font-size: 80px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1;
-      text-shadow: 0 0 80px rgba(201, 169, 110, .35)
-    }
-
-    .name-line {
-      display: block;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #c9a96e, transparent);
-      margin: 14px auto 0
-    }
-
-    .subtitle {
-      font-style: italic;
-      font-weight: 300;
-      font-size: 17px;
-      color: rgba(255, 255, 255, .5);
-      letter-spacing: 3px;
-      margin-top: 13px;
-      animation: fadeD 1s ease both 1.1s;
-      opacity: 0
-    }
-
-    .div-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 26px 0 22px;
-      animation: fadeD 1s ease both 1.3s;
-      opacity: 0
-    }
-
-    .div-line {
-      flex: 1;
-      height: 1px
-    }
-
-    .div-line:first-child {
-      background: linear-gradient(90deg, transparent, rgba(201, 169, 110, .5))
-    }
-
-    .div-line:last-child {
-      background: linear-gradient(90deg, rgba(201, 169, 110, .5), transparent)
-    }
-
-    .div-diamond {
-      width: 6px;
-      height: 6px;
-      background: #c9a96e;
-      transform: rotate(45deg)
-    }
-
-    @keyframes fadeD {
-      from {
-        opacity: 0;
-        transform: translateY(-18px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0)
-      }
-    }
-
-    @keyframes fadeU {
-      from {
-        opacity: 0;
-        transform: translateY(26px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0)
-      }
-    }
-
-    /* ───── CAKE AREA ───── */
-    .cake-area {
-      position: relative;
-      width: 230px;
-      height: 240px;
-      cursor: pointer;
-      animation: fadeU 1.2s ease both 1.5s;
-      opacity: 0
-    }
-
-    .plate {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 14px;
-      background: #2a2010;
-      border-radius: 50%
-    }
-
-    .tier {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 7px
-    }
-
-    .t1 {
-      bottom: 12px;
-      width: 182px;
-      height: 68px;
-      background: #1f1508
-    }
-
-    .t2 {
-      bottom: 76px;
-      width: 138px;
-      height: 56px;
-      background: #1f1508
-    }
-
-    .t3 {
-      bottom: 128px;
-      width: 94px;
-      height: 44px;
-      background: #1f1508
-    }
-
-    .frost {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 11px;
-      border-radius: 6px 6px 0 0;
-      background: linear-gradient(180deg, #c9a96e, #9e7d47)
-    }
-
-    .gband {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(201, 169, 110, .6), transparent)
-    }
-
-    .drip {
-      position: absolute;
-      top: 9px;
-      width: 9px;
-      height: 18px;
-      background: #c9a96e;
-      border-radius: 0 0 50% 50%
-    }
-
-    /* ───── ORIGINAL CANDLES (hidden after climber plants new ones) ───── */
-    .candle-row {
-      position: absolute;
-      bottom: 170px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 16px;
-      z-index: 10
-    }
-
-    .candle {
-      position: relative;
-      width: 8px;
-      height: 34px;
-      border-radius: 3px 3px 2px 2px
-    }
-
-    .ca {
-      background: linear-gradient(180deg, #e8d5b0, #c4a870)
-    }
-
-    .cb {
-      background: linear-gradient(180deg, #d4b896, #a67c52)
-    }
-
-    .cc {
-      background: linear-gradient(180deg, #f0e0c0, #d4aa70)
-    }
-
-    .flame {
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 8px;
-      height: 14px;
-      background: radial-gradient(ellipse at 50% 80%, #fff7e0 0%, #ffcc44 30%, #ff8800 60%, transparent 100%);
-      border-radius: 50% 50% 40% 40%;
-      animation: flicker var(--fd, .5s) ease-in-out infinite alternate
-    }
-
-    .glow-ring {
-      position: absolute;
-      bottom: calc(100% - 2px);
-      left: 50%;
-      transform: translateX(-50%);
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(circle, rgba(255, 180, 0, .5) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: glowP var(--fd, .5s) ease-in-out infinite alternate
-    }
-
-    @keyframes flicker {
-      from {
-        transform: translateX(-50%) scaleX(1) scaleY(1)
-      }
-
-      to {
-        transform: translateX(-50%) scaleX(.85) scaleY(1.1) skewX(4deg)
-      }
-    }
-
-    @keyframes glowP {
-      from {
-        opacity: .5;
-        transform: translateX(-50%) scale(1)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(-50%) scale(1.4)
-      }
-    }
-
-    /* ───── NUMBER CANDLES ───── */
-    /* t3 top = bottom:128px + height:44px = 172px from cake-area bottom.
-   We place candles so their base sits at 172px, floating above the tier. */
-    .number-candles {
-      position: absolute;
-      bottom: 172px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-      z-index: 25;
-      opacity: 0;
-      transition: opacity .6s ease;
-      align-items: flex-end
-    }
-
-    .number-candles.visible {
-      opacity: 1
-    }
-
-    .num-candle {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0
-    }
-
-    /* the big coloured digit sitting on the candle body */
-    .num-digit {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 28px;
-      line-height: 1;
-      background: linear-gradient(160deg, #fff5d0, #ffcc44, #c9a96e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 0 6px rgba(255, 200, 50, .9)) drop-shadow(0 0 14px rgba(255, 160, 0, .6));
-      display: block;
-    }
-
-    .num-body {
-      width: 18px;
-      height: 32px;
-      background: linear-gradient(180deg, #ffe066, #c9a96e);
-      border-radius: 4px 4px 3px 3px;
-      position: relative;
-      box-shadow: 0 0 8px rgba(255, 200, 50, .4)
-    }
-
-    .num-flame {
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 10px;
-      height: 18px;
-      background: radial-gradient(ellipse at 50% 80%, #fff7e0 0%, #ffcc44 30%, #ff8800 60%, transparent 100%);
-      border-radius: 50% 50% 40% 40%;
-      animation: flicker .5s ease-in-out infinite alternate
-    }
-
-    .num-glow {
-      position: absolute;
-      bottom: calc(100% - 2px);
-      left: 50%;
-      transform: translateX(-50%);
-      width: 26px;
-      height: 26px;
-      background: radial-gradient(circle, rgba(255, 200, 0, .6) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: glowP .5s ease-in-out infinite alternate
-    }
-
-    /* ───── CLIMBER SVG ───── */
-    #climberSvg {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 15;
-      pointer-events: none;
-      opacity: 0;
-      width: 52px;
-      height: 72px
-    }
-
-    @keyframes wobbleClimb {
-
-      0%,
-      100% {
-        transform: translateX(-50%) rotate(-4deg)
-      }
-
-      50% {
-        transform: translateX(-50%) rotate(4deg)
-      }
-    }
-
-    /* ───── HINT ───── */
-    .hint {
-      position: absolute;
-      bottom: -32px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: rgba(201, 169, 110, .6);
-      text-transform: uppercase;
-      white-space: nowrap;
-      animation: breathe 2s ease-in-out infinite
-    }
-
-    @keyframes breathe {
-
-      0%,
-      100% {
-        opacity: .5
-      }
-
-      50% {
-        opacity: 1
-      }
-    }
-
-    /* ───── SMOKE ───── */
-    .smoke {
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 6px;
-      height: 22px;
-      background: linear-gradient(to top, rgba(255, 255, 255, .25), transparent);
-      border-radius: 50%;
-      animation: smokeUp 1.8s ease-out forwards
-    }
-
-    @keyframes smokeUp {
-      0% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0) scaleX(1)
-      }
-
-      100% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-36px) scaleX(3)
-      }
-    }
-
-    /* ───── MSG: now below the cake, not overlay ───── */
-    .msg-section {
-      width: 100%;
-      text-align: center;
-      margin-top: 32px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease .3s, transform 1s ease .3s
-    }
-
-    .msg-section.visible {
-      opacity: 1;
-      transform: translateY(0)
-    }
-
-    .msg-birthday {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 13px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: #c9a96e;
-      margin-bottom: 10px
-    }
-
-    .msg-wish {
-      font-style: italic;
-      font-weight: 300;
-      font-size: 15px;
-      color: rgba(255, 255, 255, .5);
-      letter-spacing: 1px;
-      line-height: 1.9
-    }
-
-    .msg-wish em {
-      font-style: normal;
-      color: #c9a96e
-    }
-
-    .msg-line {
-      display: block;
-      width: 120px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #c9a96e, transparent);
-      margin: 14px auto 0
-    }
-
-    /* ───── PARTICLES ───── */
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      animation: burst var(--dur, 1.2s) ease-out forwards
-    }
-
-    @keyframes burst {
-      0% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1)
-      }
-
-      100% {
-        opacity: 0;
-        transform: translate(var(--tx), var(--ty)) scale(.2)
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buon Compleanno Michi</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',Georgia,serif;overflow:hidden}
+.bday-wrap{min-height:100vh;width:100%;display:flex;align-items:center;justify-content:center;position:relative}
+.stars-layer{position:absolute;inset:0;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle var(--d,3s) ease-in-out infinite var(--dl,0s);opacity:.2}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:1;transform:scale(1.6)}}
+.scene{position:relative;z-index:1;width:420px;display:flex;flex-direction:column;align-items:center;padding:44px 20px 56px}
+.top-orn{color:#c9a96e;font-size:20px;letter-spacing:16px;margin-bottom:26px;animation:fadeD 1s ease both .3s;opacity:0}
+.greeting-lbl{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:8px;animation:fadeD 1s ease both .5s;opacity:0}
+.name-wrap{text-align:center;margin-bottom:4px;animation:fadeD 1.2s ease both .8s;opacity:0}
+.name{font-family:'Playfair Display',serif;font-size:80px;font-weight:700;color:#fff;line-height:1;text-shadow:0 0 80px rgba(201,169,110,.35)}
+.name-line{display:block;width:100%;height:1px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);margin:14px auto 0}
+.subtitle{font-style:italic;font-weight:300;font-size:17px;color:rgba(255,255,255,.5);letter-spacing:3px;margin-top:13px;animation:fadeD 1s ease both 1.1s;opacity:0}
+.div-row{display:flex;align-items:center;gap:12px;margin:26px 0 22px;animation:fadeD 1s ease both 1.3s;opacity:0}
+.div-line{flex:1;height:1px}
+.div-line:first-child{background:linear-gradient(90deg,transparent,rgba(201,169,110,.5))}
+.div-line:last-child{background:linear-gradient(90deg,rgba(201,169,110,.5),transparent)}
+.div-diamond{width:6px;height:6px;background:#c9a96e;transform:rotate(45deg)}
+@keyframes fadeD{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeU{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.cake-area{position:relative;width:230px;height:260px;cursor:pointer;animation:fadeU 1.2s ease both 1.5s;opacity:0}
+.plate{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:14px;background:#2a2010;border-radius:50%}
+.tier{position:absolute;left:50%;transform:translateX(-50%);border-radius:7px}
+.t1{bottom:12px;width:182px;height:68px;background:#1f1508}
+.t2{bottom:76px;width:138px;height:56px;background:#1f1508}
+.t3{bottom:128px;width:94px;height:44px;background:#1f1508}
+.frost{position:absolute;top:0;left:0;right:0;height:11px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#c9a96e,#9e7d47)}
+.gband{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.6),transparent)}
+.drip{position:absolute;top:9px;width:9px;height:18px;background:#c9a96e;border-radius:0 0 50% 50%}
+.candle-row{position:absolute;bottom:170px;left:50%;transform:translateX(-50%);display:flex;gap:16px;z-index:10}
+.candle{position:relative;width:8px;height:34px;border-radius:3px 3px 2px 2px}
+.ca{background:linear-gradient(180deg,#e8d5b0,#c4a870)}
+.cb{background:linear-gradient(180deg,#d4b896,#a67c52)}
+.cc{background:linear-gradient(180deg,#f0e0c0,#d4aa70)}
+.flame{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:8px;height:14px;background:radial-gradient(ellipse at 50% 80%,#fff7e0 0%,#ffcc44 30%,#ff8800 60%,transparent 100%);border-radius:50% 50% 40% 40%;animation:flicker var(--fd,.5s) ease-in-out infinite alternate}
+.glow-ring{position:absolute;bottom:calc(100% - 2px);left:50%;transform:translateX(-50%);width:20px;height:20px;background:radial-gradient(circle,rgba(255,180,0,.5) 0%,transparent 70%);border-radius:50%;animation:glowP var(--fd,.5s) ease-in-out infinite alternate}
+@keyframes flicker{from{transform:translateX(-50%) scaleX(1) scaleY(1)}to{transform:translateX(-50%) scaleX(.85) scaleY(1.1) skewX(4deg)}}
+@keyframes glowP{from{opacity:.5;transform:translateX(-50%) scale(1)}to{opacity:1;transform:translateX(-50%) scale(1.4)}}
+
+.number-candles{
+  position:absolute;bottom:174px;left:50%;transform:translateX(-50%);
+  display:flex;gap:10px;z-index:25;opacity:0;transition:opacity .8s ease;align-items:flex-end;
+}
+.number-candles.visible{opacity:1}
+
+@keyframes numFlicker{from{transform:scaleX(1) scaleY(1)}to{transform:scaleX(.82) scaleY(1.12) skewX(4deg)}}
+@keyframes numGlow{from{opacity:.45;transform:scale(1)}to{opacity:1;transform:scale(1.45)}}
+.nf{transform-origin:center bottom;animation:numFlicker .48s ease-in-out infinite alternate}
+.ng{transform-origin:center center;animation:numGlow .48s ease-in-out infinite alternate}
+.nf2{transform-origin:center bottom;animation:numFlicker .54s ease-in-out infinite alternate}
+.ng2{transform-origin:center center;animation:numGlow .54s ease-in-out infinite alternate}
+
+/* SCALATORE — posizionato sopra la torta */
+#climberSvg{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:15;
+  pointer-events:none;
+  opacity:0;
+  width:60px;
+  height:100px;
+  transition:bottom 0s,transform 0s;
+}
+
+.hint{position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:2px;color:rgba(201,169,110,.6);text-transform:uppercase;white-space:nowrap;animation:breathe 2s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.5}50%{opacity:1}}
+.smoke{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:6px;height:22px;background:linear-gradient(to top,rgba(255,255,255,.25),transparent);border-radius:50%;animation:smokeUp 1.8s ease-out forwards}
+@keyframes smokeUp{0%{opacity:1;transform:translateX(-50%) translateY(0) scaleX(1)}100%{opacity:0;transform:translateX(-50%) translateY(-36px) scaleX(3)}}
+.msg-section{width:100%;text-align:center;margin-top:32px;opacity:0;transform:translateY(20px);transition:opacity 1s ease .3s,transform 1s ease .3s}
+.msg-section.visible{opacity:1;transform:translateY(0)}
+.msg-birthday{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:10px}
+.msg-wish{font-style:italic;font-weight:300;font-size:15px;color:rgba(255,255,255,.5);letter-spacing:1px;line-height:1.9}
+.msg-wish em{font-style:normal;color:#c9a96e}
+.msg-line{display:block;width:120px;height:1px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);margin:14px auto 0}
+.particle{position:absolute;border-radius:50%;pointer-events:none;animation:burst var(--dur,1.2s) ease-out forwards}
+@keyframes burst{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.2)}}
+</style>
 </head>
-
 <body>
-  <div class="bday-wrap" id="wrap">
-    <div class="stars-layer" id="starsLayer"></div>
+<div class="bday-wrap" id="wrap">
+  <div class="stars-layer" id="starsLayer"></div>
+  <div class="scene">
+    <div class="top-orn">— ✦ —</div>
+    <div class="greeting-lbl">Tanti auguri</div>
+    <div class="name-wrap"><span class="name">Michi</span><span class="name-line"></span></div>
+    <div class="subtitle">con tutto il cuore</div>
+    <div class="div-row"><div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div></div>
 
-    <div class="scene" id="mainScene">
-      <div class="top-orn">— ✦ —</div>
-      <div class="greeting-lbl">Tanti auguri</div>
-      <div class="name-wrap">
-        <span class="name">Michi</span>
-        <span class="name-line"></span>
+    <div class="cake-area" id="cakeArea">
+      <div class="candle-row" id="candleRow">
+        <div class="candle ca" id="cn0"><div class="glow-ring" style="--fd:.45s"></div><div class="flame" style="--fd:.45s"></div></div>
+        <div class="candle cb" id="cn1"><div class="glow-ring" style="--fd:.55s"></div><div class="flame" style="--fd:.55s"></div></div>
+        <div class="candle cc" id="cn2"><div class="glow-ring" style="--fd:.5s"></div><div class="flame" style="--fd:.5s"></div></div>
       </div>
-      <div class="subtitle">con tutto il cuore</div>
-      <div class="div-row">
-        <div class="div-line"></div>
-        <div class="div-diamond"></div>
-        <div class="div-line"></div>
-      </div>
 
-      <div class="cake-area" id="cakeArea">
-        <!-- original candles -->
-        <div class="candle-row" id="candleRow">
-          <div class="candle ca" id="cn0">
-            <div class="glow-ring" style="--fd:.45s"></div>
-            <div class="flame" style="--fd:.45s"></div>
-          </div>
-          <div class="candle cb" id="cn1">
-            <div class="glow-ring" style="--fd:.55s"></div>
-            <div class="flame" style="--fd:.55s"></div>
-          </div>
-          <div class="candle cc" id="cn2">
-            <div class="glow-ring" style="--fd:.5s"></div>
-            <div class="flame" style="--fd:.5s"></div>
-          </div>
-        </div>
-
-        <!-- number candles 3 & 2 -->
-        <div class="number-candles" id="numCandles">
-          <div class="num-candle">
-            <div class="num-digit">3</div>
-            <div class="num-body">
-              <div class="num-glow"></div>
-              <div class="num-flame"></div>
-            </div>
-          </div>
-          <div class="num-candle">
-            <div class="num-digit">2</div>
-            <div class="num-body">
-              <div class="num-glow"></div>
-              <div class="num-flame"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- cake tiers -->
-        <div class="tier t3">
-          <div class="frost"></div>
-          <div class="gband" style="top:13px"></div>
-          <div class="drip" style="left:12px"></div>
-          <div class="drip" style="left:36px"></div>
-          <div class="drip" style="left:60px"></div>
-        </div>
-        <div class="tier t2">
-          <div class="frost"></div>
-          <div class="gband" style="top:13px"></div>
-          <div class="gband" style="top:34px;opacity:.35"></div>
-          <div class="drip" style="left:8px"></div>
-          <div class="drip" style="left:32px"></div>
-          <div class="drip" style="left:58px"></div>
-          <div class="drip" style="left:84px"></div>
-          <div class="drip" style="left:110px"></div>
-        </div>
-        <div class="tier t1">
-          <div class="frost"></div>
-          <div class="gband" style="top:13px"></div>
-          <div class="gband" style="top:40px;opacity:.28"></div>
-          <div class="drip" style="left:6px"></div>
-          <div class="drip" style="left:28px"></div>
-          <div class="drip" style="left:52px"></div>
-          <div class="drip" style="left:76px"></div>
-          <div class="drip" style="left:102px"></div>
-          <div class="drip" style="left:128px"></div>
-          <div class="drip" style="left:156px"></div>
-        </div>
-        <div class="plate"></div>
-
-        <!-- kawaii climber SVG -->
-        <svg id="climberSvg" width="52" height="72" viewBox="0 0 52 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- rope/pick axe handle -->
-          <line x1="38" y1="28" x2="44" y2="20" stroke="#a0785a" stroke-width="2.5" stroke-linecap="round" />
-          <!-- axe blade -->
-          <path d="M43 19 Q47 16 46 21 Q44 22 43 19Z" fill="#c9a96e" />
-          <!-- backpack -->
-          <rect x="10" y="30" width="11" height="14" rx="3" fill="#7a5c9a" />
-          <rect x="11" y="28" width="9" height="3" rx="1.5" fill="#9370b8" />
-          <!-- body (chubby, rounded) -->
-          <rect x="18" y="30" width="16" height="18" rx="7" fill="#5c8a6e" />
-          <!-- left arm reaching out -->
-          <path d="M18 35 Q10 38 9 43" stroke="#5c8a6e" stroke-width="5" stroke-linecap="round" fill="none" />
-          <!-- right arm holding pick -->
-          <path d="M34 34 Q40 30 40 27" stroke="#5c8a6e" stroke-width="5" stroke-linecap="round" fill="none" />
-          <!-- left hand -->
-          <circle cx="9" cy="44" r="4" fill="#f5c5a0" />
-          <!-- right hand -->
-          <circle cx="40" cy="27" r="4" fill="#f5c5a0" />
-          <!-- left leg -->
-          <path d="M22 48 Q20 56 18 62" stroke="#3a5a4a" stroke-width="5" stroke-linecap="round" fill="none" />
-          <!-- right leg -->
-          <path d="M30 48 Q32 56 34 62" stroke="#3a5a4a" stroke-width="5" stroke-linecap="round" fill="none" />
-          <!-- left boot -->
-          <ellipse cx="17" cy="63" rx="5" ry="4" fill="#2a3a2a" />
-          <!-- right boot -->
-          <ellipse cx="35" cy="63" rx="5" ry="4" fill="#2a3a2a" />
-          <!-- BIG kawaii head -->
-          <circle cx="26" cy="18" r="15" fill="#f5c5a0" />
-          <!-- helmet / hat -->
-          <path d="M12 16 Q13 4 26 3 Q39 4 40 16Z" fill="#c9a96e" />
-          <rect x="10" y="15" width="32" height="5" rx="2.5" fill="#a67c52" />
-          <!-- hat strap line -->
-          <path d="M13 20 Q26 24 39 20" stroke="#a67c52" stroke-width="1.5" fill="none" />
-          <!-- big round eyes -->
-          <circle cx="20" cy="19" r="4.5" fill="white" />
-          <circle cx="32" cy="19" r="4.5" fill="white" />
-          <circle cx="21" cy="19" r="2.8" fill="#3a2010" />
-          <circle cx="33" cy="19" r="2.8" fill="#3a2010" />
-          <!-- eye shine -->
-          <circle cx="22" cy="17.5" r="1" fill="white" />
-          <circle cx="34" cy="17.5" r="1" fill="white" />
-          <!-- rosy cheeks -->
-          <ellipse cx="16" cy="23" rx="4" ry="2.5" fill="#ffb0b0" opacity=".55" />
-          <ellipse cx="36" cy="23" rx="4" ry="2.5" fill="#ffb0b0" opacity=".55" />
-          <!-- cute small smile -->
-          <path d="M22 25 Q26 28.5 30 25" stroke="#c0715a" stroke-width="1.8" stroke-linecap="round" fill="none" />
-          <!-- tiny nose dot -->
-          <circle cx="26" cy="23" r="1.2" fill="#d4956a" />
+      <div class="number-candles" id="numCandles">
+        <svg width="40" height="72" viewBox="0 0 40 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse class="ng" cx="20" cy="8" rx="12" ry="12" fill="rgba(80,160,255,0.32)"/>
+          <path class="nf" d="M20 1 Q24 5 22.5 9 Q26 6 25 12 Q22.5 16 20 15 Q17.5 16 15 12 Q14 6 17.5 9 Q16 5 20 1Z" fill="#ffcc44"/>
+          <path class="nf" d="M20 4 Q22 7.5 21 11 Q20 13 19 11 Q18 7.5 20 4Z" fill="#fff7e0"/>
+          <path d="M10 24 Q10 18 16 18 L26 18 Q34 18 34 25 Q34 31 28 32 Q34 33 34 40 Q34 48 26 48 L16 48 Q10 48 10 42" stroke="#2a7fd4" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <line x1="16" y1="32" x2="28" y2="32" stroke="#2a7fd4" stroke-width="5" stroke-linecap="round"/>
+          <rect x="12" y="52" width="16" height="6" rx="3" fill="#1a5fa0"/>
+          <rect x="8" y="58" width="24" height="5" rx="2.5" fill="#c9a96e"/>
         </svg>
-
-        <div class="hint" id="hintTxt">soffia le candeline ✦</div>
+        <svg width="30" height="72" viewBox="0 0 30 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse class="ng2" cx="15" cy="8" rx="12" ry="12" fill="rgba(80,160,255,0.32)"/>
+          <path class="nf2" d="M15 1 Q19 5 17.5 9 Q21 6 20 12 Q17.5 16 15 15 Q12.5 16 10 12 Q9 6 12.5 9 Q11 5 15 1Z" fill="#ffcc44"/>
+          <path class="nf2" d="M15 4 Q17 7.5 16 11 Q15 13 14 11 Q13 7.5 15 4Z" fill="#fff7e0"/>
+          <path d="M8 24 L12 19 L17 19" stroke="#2a7fd4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <line x1="15" y1="19" x2="15" y2="52" stroke="#2a7fd4" stroke-width="7" stroke-linecap="round"/>
+          <line x1="7" y1="52" x2="23" y2="52" stroke="#2a7fd4" stroke-width="5" stroke-linecap="round"/>
+          <rect x="6" y="52" width="18" height="6" rx="3" fill="#1a5fa0"/>
+          <rect x="3" y="58" width="24" height="5" rx="2.5" fill="#c9a96e"/>
+        </svg>
       </div>
 
-      <!-- message BELOW the cake -->
-      <div class="msg-section" id="msgSection">
-        <div class="msg-birthday">Buon compleanno</div>
-        <div class="msg-wish">
-          Che ogni tuo desiderio<br>
-          si avveri come <em>magia</em>,<br>
-          e che questo anno sia il più <em>bello</em> di tutti.
-        </div>
-        <span class="msg-line"></span>
+      <!-- tiers -->
+      <div class="tier t3">
+        <div class="frost"></div><div class="gband" style="top:13px"></div>
+        <div class="drip" style="left:12px"></div><div class="drip" style="left:36px"></div><div class="drip" style="left:60px"></div>
       </div>
+      <div class="tier t2">
+        <div class="frost"></div><div class="gband" style="top:13px"></div><div class="gband" style="top:34px;opacity:.35"></div>
+        <div class="drip" style="left:8px"></div><div class="drip" style="left:32px"></div><div class="drip" style="left:58px"></div><div class="drip" style="left:84px"></div><div class="drip" style="left:110px"></div>
+      </div>
+      <div class="tier t1">
+        <div class="frost"></div><div class="gband" style="top:13px"></div><div class="gband" style="top:40px;opacity:.28"></div>
+        <div class="drip" style="left:6px"></div><div class="drip" style="left:28px"></div><div class="drip" style="left:52px"></div><div class="drip" style="left:76px"></div><div class="drip" style="left:102px"></div><div class="drip" style="left:128px"></div><div class="drip" style="left:156px"></div>
+      </div>
+      <div class="plate"></div>
+
+      <!--
+        SCALATORE REALISTICO — vista di schiena durante la salita.
+        Abbigliamento tecnico: giacca softshell, pantaloni da arrampicata,
+        scarpette da roccia, imbrago, zaino da via.
+        Capelli neri, berretto blu.
+        viewBox 60×100, pivot basso al centro.
+      -->
+      <svg id="climberSvg" width="60" height="100" viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- ===== VISTA DI SCHIENA ===== -->
+        <g id="backView">
+
+          <!-- GAMBE — pantaloni tecnici antracite, posizione da scalatore (una gamba alta, una bassa) -->
+          <!-- gamba dx bassa, leggermente indietro -->
+          <path d="M30 65 Q33 70 34 80 Q34 88 33 92" stroke="#2d2d2d" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <!-- gamba sx alta, spinta in avanti/su -->
+          <path d="M26 63 Q22 68 20 76 Q18 84 18 90" stroke="#2d2d2d" stroke-width="7" stroke-linecap="round" fill="none"/>
+
+          <!-- SCARPETTE da roccia (suola gommata rossa) -->
+          <!-- piede dx -->
+          <ellipse cx="33" cy="93" rx="6" ry="3" fill="#8b1a1a" transform="rotate(-5 33 93)"/>
+          <rect x="28" y="90" width="10" height="5" rx="2" fill="#6b1414"/>
+          <!-- piede sx -->
+          <ellipse cx="18" cy="91" rx="6" ry="3" fill="#8b1a1a" transform="rotate(10 18 91)"/>
+          <rect x="13" y="88" width="10" height="5" rx="2" fill="#6b1414"/>
+
+          <!-- IMBRAGO — cinture visibili sopra i pantaloni -->
+          <!-- cintura vita -->
+          <rect x="18" y="59" width="24" height="4" rx="2" fill="#c9a96e" opacity=".9"/>
+          <!-- cosciali -->
+          <path d="M20 63 Q18 68 19 74" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".8"/>
+          <path d="M38 63 Q40 68 39 74" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".8"/>
+          <!-- moschettone centrale -->
+          <ellipse cx="29" cy="62" rx="3" ry="4" stroke="#aaa" stroke-width="1.5" fill="none"/>
+          <rect x="27.5" y="61" width="3" height="2" rx="1" fill="#bbb"/>
+
+          <!-- TORSO — giacca softshell verde oliva con dettagli tecnici -->
+          <!-- corpo principale giacca -->
+          <path d="M19 38 Q17 45 17 55 Q17 62 19 64 L29 65 L39 63 Q41 61 41 55 Q41 45 39 38 Z" fill="#4a5a3a"/>
+          <!-- pannello dorsale più scuro -->
+          <path d="M22 40 Q20 47 21 57 L29 58 L37 57 Q38 47 36 40 Z" fill="#3a4a2e"/>
+          <!-- tasca verticale a sinistra -->
+          <rect x="20" y="46" width="5" height="8" rx="1.5" fill="#3a4a2e" stroke="#5a6a4a" stroke-width=".8"/>
+          <!-- zip centrale visibile -->
+          <line x1="29" y1="38" x2="29" y2="63" stroke="#5a6a4a" stroke-width="1" stroke-dasharray="2 2"/>
+
+          <!-- ZAINO tecnico — profilo snello da alpinismo -->
+          <!-- corpo zaino -->
+          <path d="M14 37 Q11 40 11 52 Q11 60 13 63 Q18 64 19 62 Q18 55 18 45 Q18 40 19 37 Z" fill="#2d3a7a"/>
+          <!-- tasca frontale zaino -->
+          <rect x="11.5" y="43" width="7" height="10" rx="2" fill="#253068"/>
+          <!-- bretelle/spallacci -->
+          <path d="M19 37 Q17 33 16 30 Q17 28 19 29 Q20 32 19 37" fill="#253068"/>
+          <!-- picozza agganciata lateralmente -->
+          <line x1="12" y1="36" x2="10" y2="22" stroke="#8a7a5a" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9 22 Q6 19 8 17 Q10 16 11 19 Q12 22 10 23 Z" fill="#c9a96e"/>
+          <!-- punta bassa picozza -->
+          <path d="M10 23 Q9 26 10 28" stroke="#8a7a5a" stroke-width="1.5" stroke-linecap="round"/>
+
+          <!-- BRACCIA — posizione asimmetrica da scalatore in movimento -->
+          <!-- braccio dx alzato (si aggrappa in alto a dx) -->
+          <path d="M39 42 Q44 36 46 28" stroke="#4a5a3a" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <!-- guanto dx -->
+          <ellipse cx="46.5" cy="26" rx="4" ry="3.5" fill="#1a1a1a"/>
+          <!-- dita guanto -->
+          <path d="M44 24 Q43 21 45 21 Q47 21 46 24" stroke="#333" stroke-width="1.2" fill="none"/>
+          <!-- braccio sx abbassato (posizione alternata) -->
+          <path d="M19 42 Q15 46 12 50" stroke="#4a5a3a" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <!-- guanto sx -->
+          <ellipse cx="11" cy="51.5" rx="4" ry="3.5" fill="#1a1a1a"/>
+
+          <!-- CORDA — filo sottile che scende -->
+          <path d="M29 62 Q31 70 29 78 Q27 86 30 94" stroke="rgba(255,200,100,.5)" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="3 2"/>
+
+          <!-- COLLO -->
+          <rect x="25" y="30" width="8" height="9" rx="3" fill="#c89060"/>
+
+          <!-- TESTA — proporzioni adulte realistiche -->
+          <ellipse cx="29" cy="23" rx="9" ry="10" fill="#c89060"/>
+
+          <!-- orecchie -->
+          <ellipse cx="20" cy="24" rx="2.5" ry="3.5" fill="#b87848"/>
+          <ellipse cx="38" cy="24" rx="2.5" ry="3.5" fill="#b87848"/>
+
+          <!-- CAPELLI NERI — visibili sotto il berretto -->
+          <path d="M20 20 Q20 28 22 30 L21 31 Q19 28 19 23 Z" fill="#1a0f00"/>
+          <path d="M38 20 Q38 28 36 30 L37 31 Q39 28 39 23 Z" fill="#1a0f00"/>
+          <path d="M20 20 Q21 30 29 31 Q37 30 38 20 Q36 33 29 33 Q22 33 20 20Z" fill="#1a0f00"/>
+
+          <!-- BERRETTO BLU tecnico — con visiera -->
+          <path d="M20 19 Q20 11 29 10 Q38 11 38 19 Q36 21 29 21 Q22 21 20 19Z" fill="#1565c0"/>
+          <!-- pannello frontale berretto -->
+          <path d="M21 18 Q25 14 29 13 Q33 14 37 18 Q33 20 29 20 Q25 20 21 18Z" fill="#1976d2"/>
+          <!-- pompon/logo -->
+          <circle cx="29" cy="11" r="2.5" fill="#42a5f5"/>
+          <!-- visiera -->
+          <path d="M20 19 Q18 20 17 21 Q19 23 23 22 Q22 21 20 19Z" fill="#0d47a1"/>
+          <!-- fascia paraorecchie -->
+          <path d="M20 19 Q19 22 20 26" stroke="#0d47a1" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M38 19 Q39 22 38 26" stroke="#0d47a1" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <!-- logo/patch sul berretto -->
+          <circle cx="29" cy="16" r="3" fill="none" stroke="#42a5f5" stroke-width="1"/>
+          <path d="M27.5 16 L29 14.5 L30.5 16 L29 17.5Z" fill="#42a5f5"/>
+        </g>
+
+        <!-- ===== VISTA FRONTALE (nascosta inizialmente) ===== -->
+        <g id="frontView" opacity="0">
+
+          <!-- GAMBE distese, posizione da triumfo -->
+          <path d="M26 65 Q24 73 23 82 Q22 88 22 93" stroke="#2d2d2d" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path d="M32 65 Q34 73 35 82 Q36 88 36 93" stroke="#2d2d2d" stroke-width="7" stroke-linecap="round" fill="none"/>
+
+          <!-- scarpette fronte -->
+          <ellipse cx="22" cy="94" rx="6" ry="3" fill="#8b1a1a"/>
+          <rect x="17" y="91" width="10" height="5" rx="2" fill="#6b1414"/>
+          <ellipse cx="36" cy="94" rx="6" ry="3" fill="#8b1a1a"/>
+          <rect x="31" y="91" width="10" height="5" rx="2" fill="#6b1414"/>
+
+          <!-- imbrago frontale -->
+          <rect x="18" y="59" width="24" height="4" rx="2" fill="#c9a96e" opacity=".9"/>
+          <path d="M20 63 Q18 68 19 74" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".8"/>
+          <path d="M38 63 Q40 68 39 74" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".8"/>
+          <ellipse cx="29" cy="62" rx="3" ry="4" stroke="#aaa" stroke-width="1.5" fill="none"/>
+          <rect x="27.5" y="61" width="3" height="2" rx="1" fill="#bbb"/>
+
+          <!-- TORSO frontale — giacca con dettagli -->
+          <path d="M18 38 Q16 45 16 55 Q16 62 18 64 L29 65 L40 63 Q42 61 42 55 Q42 45 40 38 Z" fill="#4a5a3a"/>
+          <!-- zip centrale -->
+          <line x1="29" y1="38" x2="29" y2="64" stroke="#6a7a5a" stroke-width="1.5" stroke-dasharray="2 2"/>
+          <!-- logo/patch petto sx -->
+          <circle cx="22" cy="46" r="4" fill="none" stroke="#6a8a5a" stroke-width="1"/>
+          <path d="M20.5 46 L22 44 L23.5 46 L22 48Z" fill="#6a8a5a"/>
+          <!-- tasca petto dx con zip -->
+          <rect x="31" y="43" width="7" height="6" rx="1.5" fill="#3a4a2e" stroke="#5a6a4a" stroke-width=".8"/>
+          <line x1="31" y1="44" x2="38" y2="44" stroke="#6a7a5a" stroke-width=".8"/>
+
+          <!-- BRACCIA ALZATE — trionfo, entrambe su -->
+          <!-- braccio sx alzato a V -->
+          <path d="M18 42 Q10 34 6 22" stroke="#4a5a3a" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <ellipse cx="5" cy="20" rx="4" ry="3.5" fill="#1a1a1a"/>
+          <!-- indice che punta su -->
+          <rect x="3.5" y="11" width="3" height="9" rx="1.5" fill="#1a1a1a"/>
+          <ellipse cx="5" cy="11" rx="2" ry="2" fill="#2a2a2a"/>
+
+          <!-- braccio dx alzato a V -->
+          <path d="M40 42 Q48 34 52 22" stroke="#4a5a3a" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <ellipse cx="53" cy="20" rx="4" ry="3.5" fill="#1a1a1a"/>
+          <rect x="51.5" y="11" width="3" height="9" rx="1.5" fill="#1a1a1a"/>
+          <ellipse cx="53" cy="11" rx="2" ry="2" fill="#2a2a2a"/>
+
+          <!-- COLLO -->
+          <rect x="25" y="30" width="8" height="9" rx="3" fill="#c89060"/>
+
+          <!-- TESTA frontale -->
+          <ellipse cx="29" cy="22" rx="9" ry="10" fill="#c89060"/>
+          <ellipse cx="20" cy="23" rx="2.5" ry="3.5" fill="#b87848"/>
+          <ellipse cx="38" cy="23" rx="2.5" ry="3.5" fill="#b87848"/>
+
+          <!-- berretto blu frontale -->
+          <path d="M20 18 Q20 10 29 9 Q38 10 38 18 Q36 20 29 20 Q22 20 20 18Z" fill="#1565c0"/>
+          <path d="M21 17 Q25 13 29 12 Q33 13 37 17 Q33 19 29 19 Q25 19 21 17Z" fill="#1976d2"/>
+          <circle cx="29" cy="10" r="2.5" fill="#42a5f5"/>
+          <path d="M20 18 Q18 19 17 20 Q19 22 23 21 Q22 20 20 18Z" fill="#0d47a1"/>
+          <path d="M20 18 Q19 21 20 25" stroke="#0d47a1" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M38 18 Q39 21 38 25" stroke="#0d47a1" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="29" cy="15" r="3" fill="none" stroke="#42a5f5" stroke-width="1"/>
+          <path d="M27.5 15 L29 13.5 L30.5 15 L29 16.5Z" fill="#42a5f5"/>
+
+          <!-- capelli neri -->
+          <path d="M20 16 Q19 22 21 27" fill="#1a0f00" stroke="#1a0f00" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M38 16 Q39 22 37 27" fill="#1a0f00" stroke="#1a0f00" stroke-width="2.5" stroke-linecap="round"/>
+
+          <!-- OCCHI adulti, espressivi -->
+          <ellipse cx="23.5" cy="22" rx="3.5" ry="3" fill="white"/>
+          <ellipse cx="34.5" cy="22" rx="3.5" ry="3" fill="white"/>
+          <circle cx="24.2" cy="22.5" r="2.2" fill="#1e1208"/>
+          <circle cx="35.2" cy="22.5" r="2.2" fill="#1e1208"/>
+          <circle cx="24.8" cy="21.5" r="0.9" fill="white"/>
+          <circle cx="35.8" cy="21.5" r="0.9" fill="white"/>
+
+          <!-- sopracciglia alzate — espressione di gioia -->
+          <path d="M20.5 18.5 Q23.5 17 26.5 18" stroke="#1a0f00" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M31.5 18 Q34.5 17 37.5 18.5" stroke="#1a0f00" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+
+          <!-- guance rosse di gioia -->
+          <ellipse cx="18" cy="26" rx="4" ry="2.5" fill="#f0a0a0" opacity=".4"/>
+          <ellipse cx="40" cy="26" rx="4" ry="2.5" fill="#f0a0a0" opacity=".4"/>
+
+          <!-- naso -->
+          <path d="M28 24 Q29 26 30 24" stroke="#b07848" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+
+          <!-- SORRISO GRANDE trionfante -->
+          <path d="M22 28 Q29 34 36 28" stroke="#a05838" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- denti appena accennati -->
+          <path d="M24 29 Q29 33 34 29 Q29 30 24 29Z" fill="rgba(255,255,255,0.6)"/>
+        </g>
+      </svg>
+
+      <div class="hint" id="hintTxt">soffia le candeline ✦</div>
+    </div>
+
+    <div class="msg-section" id="msgSection">
+      <div class="msg-birthday">Buon compleanno</div>
+      <div class="msg-wish">
+        Che ogni tuo desiderio<br>
+        si avveri come <em>magia</em>,<br>
+        e che questo anno sia il più <em>bello</em> di tutti.
+      </div>
+      <span class="msg-line"></span>
     </div>
   </div>
+</div>
 
-  <script>
-    (function () {
-      /* ── stars ── */
-      const starsLayer = document.getElementById('starsLayer');
-      for (let i = 0; i < 90; i++) {
-        const s = document.createElement('div');
-        s.className = 'star';
-        s.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 100}%;--d:${2 + Math.random() * 4}s;--dl:${Math.random() * 4}s;width:${Math.random() > .7 ? 3 : 2}px;height:${Math.random() > .7 ? 3 : 2}px`;
-        starsLayer.appendChild(s);
-      }
+<script>
+(function(){
+  const starsLayer=document.getElementById('starsLayer');
+  for(let i=0;i<90;i++){
+    const s=document.createElement('div');s.className='star';
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--dl:${Math.random()*4}s;width:${Math.random()>.7?3:2}px;height:${Math.random()>.7?3:2}px`;
+    starsLayer.appendChild(s);
+  }
 
-      const cakeArea = document.getElementById('cakeArea');
-      const hint = document.getElementById('hintTxt');
-      const candleRow = document.getElementById('candleRow');
-      const numCandles = document.getElementById('numCandles');
-      const climberSvg = document.getElementById('climberSvg');
-      const msgSection = document.getElementById('msgSection');
-      const wrap = document.getElementById('wrap');
-      let done = false;
+  const cakeArea=document.getElementById('cakeArea');
+  const hint=document.getElementById('hintTxt');
+  const candleRow=document.getElementById('candleRow');
+  const numCandles=document.getElementById('numCandles');
+  const climberSvg=document.getElementById('climberSvg');
+  const backView=document.getElementById('backView');
+  const frontView=document.getElementById('frontView');
+  const msgSection=document.getElementById('msgSection');
+  const wrap=document.getElementById('wrap');
+  let done=false;
 
-      /* ── blow-out orignal candles ── */
-      function blowCandles() {
-        [0, 1, 2].forEach((i) => {
-          setTimeout(() => {
-            const c = document.getElementById('cn' + i);
-            const f = c.querySelector('.flame');
-            const g = c.querySelector('.glow-ring');
-            if (f) f.remove();
-            if (g) g.remove();
-            const sm = document.createElement('div');
-            sm.className = 'smoke';
-            c.appendChild(sm);
-            setTimeout(() => sm.remove(), 1800);
-          }, i * 130);
+  /* animazione di scalata realistica: braccia e gambe alternati */
+  let climbAnim=null;
+  function startClimbCycle(){
+    if(climbAnim)return;
+    const keyframes=[
+      /* appoggio con gamba dx, braccio sx su */
+      {transform:'translateX(-50%) rotate(-4deg) skewY(1deg)',offset:0},
+      /* spinta, leggero oscillamento */
+      {transform:'translateX(-50%) rotate(0deg) skewY(0deg)',offset:.25},
+      /* appoggio con gamba sx, braccio dx su */
+      {transform:'translateX(-50%) rotate(4deg) skewY(-1deg)',offset:.5},
+      /* spinta opposta */
+      {transform:'translateX(-50%) rotate(0deg) skewY(0deg)',offset:.75},
+      {transform:'translateX(-50%) rotate(-4deg) skewY(1deg)',offset:1},
+    ];
+    climbAnim=climberSvg.animate(keyframes,{
+      duration:700,iterations:Infinity,easing:'ease-in-out'
+    });
+  }
+  function stopClimbCycle(){
+    if(climbAnim){climbAnim.cancel();climbAnim=null;}
+  }
+
+  function blowCandles(){
+    [0,1,2].forEach(i=>{
+      setTimeout(()=>{
+        const c=document.getElementById('cn'+i);
+        const f=c.querySelector('.flame'),g=c.querySelector('.glow-ring');
+        if(f)f.remove();if(g)g.remove();
+        const sm=document.createElement('div');sm.className='smoke';
+        c.appendChild(sm);setTimeout(()=>sm.remove(),1800);
+      },i*130);
+    });
+  }
+
+  function burst(cx,cy){
+    const cols=['#c9a96e','#e8d5b0','#fff7e0','#a67c52','#ffffff','#ffd700','#42a5f5','#1565c0','#4fa8d4','#2a7fd4'];
+    for(let i=0;i<65;i++){
+      const p=document.createElement('div');p.className='particle';
+      const ang=Math.random()*Math.PI*2,dist=70+Math.random()*200,sz=3+Math.random()*6;
+      p.style.cssText=`left:${cx}px;top:${cy}px;width:${sz}px;height:${sz}px;background:${cols[Math.floor(Math.random()*cols.length)]};--tx:${Math.cos(ang)*dist}px;--ty:${Math.sin(ang)*dist}px;--dur:${.9+Math.random()*.8}s;animation-delay:${Math.random()*.1}s;position:absolute;z-index:40;border-radius:50%`;
+      wrap.appendChild(p);setTimeout(()=>p.remove(),2000);
+    }
+  }
+
+  function easeInOut(t){return t<0.5?2*t*t:-1+(4-2*t)*t;}
+
+  function smoothTo(targetBottom,dur,easeFn,onDone){
+    const startBottom=parseFloat(climberSvg.style.bottom)||0;
+    const start=performance.now();
+    function tick(now){
+      const t=Math.min((now-start)/dur,1);
+      const e=easeFn(t);
+      const cur=startBottom+(targetBottom-startBottom)*e;
+      climberSvg.style.bottom=cur+'px';
+      if(t<1)requestAnimationFrame(tick);
+      else{climberSvg.style.bottom=targetBottom+'px';if(onDone)onDone();}
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function animateClimber(){
+    climberSvg.style.opacity='1';
+    climberSvg.style.bottom='0px';
+    startClimbCycle();
+
+    /* 4 tappe di salita lungo la torta, più lente e credibili */
+    smoothTo(18,800,easeInOut,()=>{
+      smoothTo(76,1000,easeInOut,()=>{
+        smoothTo(130,900,easeInOut,()=>{
+          smoothTo(168,800,easeInOut,()=>{
+            stopClimbCycle();
+            onSummit();
+          });
         });
-      }
-
-      /* ── particles burst ── */
-      function burst(cx, cy) {
-        const cols = ['#c9a96e', '#e8d5b0', '#f0e0c0', '#fff7e0', '#a67c52', '#ffffff', '#ffd700'];
-        for (let i = 0; i < 55; i++) {
-          const p = document.createElement('div');
-          p.className = 'particle';
-          const ang = Math.random() * Math.PI * 2;
-          const dist = 70 + Math.random() * 170;
-          const sz = 3 + Math.random() * 5;
-          const wRect = wrap.getBoundingClientRect();
-          p.style.cssText = `left:${cx}px;top:${cy}px;width:${sz}px;height:${sz}px;background:${cols[Math.floor(Math.random() * cols.length)]};--tx:${Math.cos(ang) * dist}px;--ty:${Math.sin(ang) * dist}px;--dur:${.8 + Math.random() * .8}s;animation-delay:${Math.random() * .15}s;position:absolute;z-index:40;border-radius:50%`;
-          wrap.appendChild(p);
-          setTimeout(() => p.remove(), 1800);
-        }
-      }
-
-      /* ── climber animation ── */
-      // Cake geometry (matching CSS): plate bottom=0, t1 bottom=12 h=68 → top=80, t2 bottom=76 h=56 → top=132, t3 bottom=128 h=44 → top=172
-      // climberSvg is positioned bottom:0, so its Y=0 is bottom of cakeArea (h=240)
-      // We'll animate transform: translateY in terms of px from bottom
-      // cakeArea height = 240px
-      // We want climber to go from bottom (y=240) up to top of t1, then t2, then t3
-      // The SVG anchor is bottom-center; its viewBox height=60, so "feet" are at bottom of SVG
-      // translateY moves the whole svg; bottom:0 means svg bottom aligns with cakeArea bottom
-      // We'll use JS to move it upward step by step
-
-      // Key stops (bottom offset in px from bottom of cakeArea):
-      // start: -20 (below plate, off screen slightly)
-      // on plate: 12 (plate top)
-      // tier1 top: 80
-      // tier2 top: 132
-      // tier3 top: 172 (summit)
-
-      function animateClimber() {
-        climberSvg.style.opacity = '1';
-
-        // Cake tiers (from CSS):
-        // plate top ≈ 12px, t1 top = 80px, t2 top = 132px, t3 top = 172px (all from cake-area bottom)
-        // SVG is 72px tall; feet are near bottom of SVG (~65px from top = 7px from bottom)
-        // So to place feet at a given tier-top: bottom = tierTop - 7
-        const steps = [
-          { b: -20, dur: 300 },   // start hidden below
-          { b: 5, dur: 500 },   // on plate
-          { b: 73, dur: 1000 },   // tier1 top
-          { b: 125, dur: 900 },   // tier2 top
-          { b: 165, dur: 800 },   // tier3 summit
-        ];
-
-        let t = 0;
-        steps.forEach((step, i) => {
-          setTimeout(() => {
-            climberSvg.style.transition = `bottom ${step.dur}ms cubic-bezier(.4,0,.2,1)`;
-            climberSvg.style.bottom = step.b + 'px';
-            // wobble side-to-side while climbing
-            if (i > 0 && i < steps.length - 1) {
-              climberSvg.style.animation = 'none';
-              void climberSvg.offsetWidth; // reflow
-              climberSvg.style.animation = `wobbleClimb ${step.dur}ms ease-in-out`;
-            }
-          }, t);
-          t += step.dur + 60;
-        });
-
-        const totalClimb = t;
-        setTimeout(() => {
-          // victory bounce
-          climberSvg.style.transition = 'transform .25s ease';
-          climberSvg.style.transform = 'translateX(-50%) scale(1.2) rotate(-6deg)';
-          setTimeout(() => {
-            climberSvg.style.transform = 'translateX(-50%) scale(1) rotate(0deg)';
-          }, 250);
-
-          // hide original candle stumps, reveal number candles
-          candleRow.style.transition = 'opacity .3s ease';
-          candleRow.style.opacity = '0';
-          setTimeout(() => { numCandles.classList.add('visible'); }, 200);
-
-          // particle burst at cake top
-          const rect = cakeArea.getBoundingClientRect();
-          const wRect = wrap.getBoundingClientRect();
-          burst(rect.left - wRect.left + rect.width / 2, rect.top - wRect.top + 50);
-
-          // fade climber out
-          setTimeout(() => {
-            climberSvg.style.transition = 'opacity .8s ease';
-            climberSvg.style.opacity = '0';
-          }, 900);
-
-          // show message below
-          setTimeout(() => { msgSection.classList.add('visible'); }, 700);
-
-        }, totalClimb + 100);
-      }
-
-      /* ── click handler ── */
-      cakeArea.addEventListener('click', () => {
-        if (done) return;
-        done = true;
-        hint.style.display = 'none';
-
-        blowCandles();
-        setTimeout(animateClimber, 400);
       });
+    });
+  }
 
-    })();
-  </script>
+  function onSummit(){
+    /* pausa breve in cima, poi rotazione frontale */
+    climberSvg.style.transform='translateX(-50%) rotate(0deg)';
+
+    setTimeout(()=>{
+      /* flip: schiaccia su X a 0, cambia vista, riapre */
+      const rotAnim=climberSvg.animate([
+        {transform:'translateX(-50%) scaleX(1)',offset:0},
+        {transform:'translateX(-50%) scaleX(0)',offset:.5},
+        {transform:'translateX(-50%) scaleX(1)',offset:1},
+      ],{duration:600,fill:'forwards',easing:'ease-in-out'});
+
+      setTimeout(()=>{
+        backView.setAttribute('opacity','0');
+        frontView.setAttribute('opacity','1');
+      },300);
+
+      rotAnim.onfinish=()=>{
+        climberSvg.style.transform='translateX(-50%) scaleX(1)';
+
+        /* esultanza: due rimbalzi gioiosi */
+        climberSvg.animate([
+          {transform:'translateX(-50%) scale(1) rotate(0deg)',offset:0},
+          {transform:'translateX(-50%) scale(1.12) rotate(-5deg)',offset:.2},
+          {transform:'translateX(-50%) scale(1.12) rotate(5deg)',offset:.45},
+          {transform:'translateX(-50%) scale(1.06) rotate(-2deg)',offset:.7},
+          {transform:'translateX(-50%) scale(1) rotate(0deg)',offset:1},
+        ],{duration:800,fill:'forwards',easing:'ease-in-out'});
+
+        /* spegni le vecchie candeline, mostra le numerali */
+        candleRow.style.transition='opacity .3s ease';
+        candleRow.style.opacity='0';
+        setTimeout(()=>{numCandles.classList.add('visible');},200);
+
+        /* coriandoli */
+        const rect=cakeArea.getBoundingClientRect();
+        const wRect=wrap.getBoundingClientRect();
+        burst(rect.left-wRect.left+rect.width/2,rect.top-wRect.top+40);
+
+        /* fade out scalatore */
+        setTimeout(()=>{
+          climberSvg.style.transition='opacity .9s ease';
+          climberSvg.style.opacity='0';
+        },1100);
+
+        /* messaggio */
+        setTimeout(()=>{msgSection.classList.add('visible');},900);
+      };
+    },350);
+  }
+
+  cakeArea.addEventListener('click',()=>{
+    if(done)return;
+    done=true;
+    hint.style.display='none';
+    blowCandles();
+    setTimeout(animateClimber,400);
+  });
+})();
+</script>
 </body>
-
 </html>
