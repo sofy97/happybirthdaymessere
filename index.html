@@ -49,21 +49,101 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
 .smoke{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:6px;height:22px;background:linear-gradient(to top,rgba(255,255,255,.25),transparent);border-radius:50%;animation:smokeUp 1.8s ease-out forwards}
 @keyframes smokeUp{0%{opacity:1;transform:translateX(-50%) translateY(0) scaleX(1)}100%{opacity:0;transform:translateX(-50%) translateY(-36px) scaleX(3)}}
 
-/* Climber styles */
-.climber-rope{position:absolute;left:50%;top:0;width:2px;height:0;background:linear-gradient(180deg,#a67c52,#8b6a3c);transform:translateX(-50%);z-index:5;opacity:0;animation:ropeDescend 2s ease-in-out forwards}
-@keyframes ropeDescend{0%{height:0;opacity:1}100%{height:240px;opacity:1}}
-.climber{position:absolute;left:50%;top:0;width:20px;height:24px;z-index:6;opacity:0;animation:climberDescend 2s ease-in-out forwards}
-.climber-body{width:16px;height:14px;background:linear-gradient(135deg,#e8a030,#d48020);border-radius:3px;position:relative;left:2px;top:4px}
-.climber-head{width:8px;height:8px;background:#f4a050;border-radius:50%;position:absolute;left:6px;top:0}
-.climber-arm{position:absolute;width:12px;height:2px;background:#f4a050;top:6px}
-.climber-arm-left{left:2px;transform:rotate(-30deg);transform-origin:2px center}
-.climber-arm-right{right:2px;transform:rotate(30deg);transform-origin:calc(100% - 2px) center;animation:armSwing 0.6s ease-in-out infinite}
-.climber-leg{position:absolute;width:2px;height:8px;background:#3d3d3d;bottom:0}
-.climber-leg-left{left:4px}
-.climber-leg-right{right:4px;animation:legSwing 0.6s ease-in-out infinite}
-@keyframes climberDescend{0%{top:-30px;opacity:0;transform:translateX(-50%)}10%{opacity:1}100%{top:210px;opacity:1;transform:translateX(-50%)}}
-@keyframes armSwing{0%,100%{transform:rotate(30deg);transform-origin:calc(100% - 2px) center}50%{transform:rotate(-30deg);transform-origin:calc(100% - 2px) center}}
-@keyframes legSwing{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-20deg)}}
+/* --- NUOVO STILE SCALATORE ELEGANTE --- */
+.climber-rope {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(201,169,110,0.1), #c9a96e);
+  transform: translateX(-50%);
+  z-index: 15;
+  top: 0;
+  animation: ropeExtend 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+@keyframes ropeExtend {
+  0% { height: 0; }
+  100% { height: var(--stop-y); }
+}
+
+.climber {
+  position: absolute;
+  width: 24px;
+  height: 38px;
+  z-index: 16;
+  transform: translateX(-50%);
+  top: -50px;
+  animation: climberSlide 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+@keyframes climberSlide {
+  0% { top: -50px; }
+  100% { top: calc(var(--stop-y) - 35px); }
+}
+
+/* Design minimale a silhouette dello scalatore */
+.climber-harness {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.c-head {
+  width: 7px;
+  height: 7px;
+  background: #e8d5b0;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.c-body {
+  width: 8px;
+  height: 16px;
+  background: #1a1525;
+  border: 1px solid #c9a96e;
+  border-radius: 4px;
+  margin: 1px auto 0;
+  position: relative;
+}
+.c-arm {
+  position: absolute;
+  width: 2px;
+  height: 14px;
+  background: #c9a96e;
+  top: 1px;
+}
+.c-arm.left {
+  left: -3px;
+  transform: rotate(-25deg);
+  transform-origin: top right;
+}
+.c-arm.right {
+  right: -3px;
+  transform: rotate(25deg);
+  transform-origin: top left;
+  animation: armMove 0.4s ease-in-out infinite alternate;
+}
+.c-leg {
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  background: #1a1525;
+  border-left: 1px solid #c9a96e;
+  bottom: -10px;
+}
+.c-leg.left {
+  left: 1px;
+  transform: rotate(-15deg);
+}
+.c-leg.right {
+  right: 1px;
+  transform: rotate(15deg);
+  animation: legMove 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes armMove {
+  0% { transform: rotate(15deg); }
+  100% { transform: rotate(40deg); }
+}
+@keyframes legMove {
+  0% { transform: rotate(5deg); }
+  100% { transform: rotate(30deg); }
+}
 
 .msg-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:50;opacity:0;transition:opacity .9s ease}
 .msg-overlay.visible{opacity:1;pointer-events:all}
@@ -170,35 +250,44 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
     done=true;
     hint.style.display='none';
 
-    // Create climber with rope
     const rect=cakeArea.getBoundingClientRect();
     const wRect=wrap.getBoundingClientRect();
-    const cx=rect.left-wRect.left+rect.width/2;
     
+    // Coordinata X centrale rispetto alla torta
+    const cx=rect.left-wRect.left+rect.width/2;
+    // Punto esatto di stop sopra le candeline
+    const stopY = rect.top - wRect.top + 135; 
+
+    // Crea la corda che scende dall'alto assoluto dello schermo
     const rope=document.createElement('div');
     rope.className='climber-rope';
     rope.style.left=cx+'px';
-    rope.style.top=(rect.top-wRect.top)+'px';
+    rope.style.setProperty('--stop-y', stopY + 'px');
     wrap.appendChild(rope);
 
+    // Crea lo scalatore minimale
     const climber=document.createElement('div');
     climber.className='climber';
     climber.style.left=cx+'px';
-    climber.style.top=(rect.top-wRect.top)+'px';
+    climber.style.setProperty('--stop-y', stopY + 'px');
     climber.innerHTML=`
-      <div class="climber-head"></div>
-      <div class="climber-body">
-        <div class="climber-arm climber-arm-left"></div>
-        <div class="climber-arm climber-arm-right"></div>
+      <div class="climber-harness">
+        <div class="c-head"></div>
+        <div class="c-body">
+          <div class="c-arm left"></div>
+          <div class="c-arm right"></div>
+        </div>
+        <div class="c-leg left"></div>
+        <div class="c-leg right"></div>
       </div>
-      <div class="climber-leg climber-leg-left"></div>
-      <div class="climber-leg climber-leg-right"></div>
     `;
     wrap.appendChild(climber);
 
+    // Spegnimento candeline sincronizzato con l'arrivo (dopo circa 1.5 secondi)
     [0,1,2].forEach((i)=>{
       setTimeout(()=>{
         const c=document.getElementById('cn'+i);
+        if(!c) return;
         const f=c.querySelector('.flame');
         const g=c.querySelector('.glow-ring');
         if(f)f.remove();
@@ -207,27 +296,31 @@ body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify
         sm.className='smoke';
         c.appendChild(sm);
         setTimeout(()=>sm.remove(),1800);
-      },i*130);
+      }, 1500 + (i*150));
     });
 
-    const cy=rect.top-wRect.top+80;
+    // Esplosione particelle all'arrivo dello scalatore
+    const cy=rect.top-wRect.top+140;
     const cols=['#c9a96e','#e8d5b0','#f0e0c0','#fff7e0','#a67c52','#ffffff','#ffd700'];
-    for(let i=0;i<55;i++){
-      const p=document.createElement('div');
-      p.className='particle';
-      const ang=Math.random()*Math.PI*2;
-      const dist=70+Math.random()*170;
-      const sz=3+Math.random()*5;
-      p.style.cssText=`left:${cx}px;top:${cy}px;width:${sz}px;height:${sz}px;background:${cols[Math.floor(Math.random()*cols.length)]};--tx:${Math.cos(ang)*dist}px;--ty:${Math.sin(ang)*dist}px;--dur:${.9+Math.random()*.9}s`;
-      wrap.appendChild(p);
-      setTimeout(()=>p.remove(),1800);
-    }
+    setTimeout(() => {
+      for(let i=0;i<55;i++){
+        const p=document.createElement('div');
+        p.className='particle';
+        const ang=Math.random()*Math.PI*2;
+        const dist=70+Math.random()*170;
+        const sz=3+Math.random()*5;
+        p.style.cssText=`left:${cx}px;top:${cy}px;width:${sz}px;height:${sz}px;background:${cols[Math.floor(Math.random()*cols.length)]};--tx:${Math.cos(ang)*dist}px;--ty:${Math.sin(ang)*dist}px;--dur:${.9+Math.random()*.9}s`;
+        wrap.appendChild(p);
+        setTimeout(()=>p.remove(),1800);
+      }
+    }, 1500);
 
+    // Mostra la schermata finale e pulisci la scena
     setTimeout(()=>{
       rope.remove();
       climber.remove();
       overlay.classList.add('visible');
-    },2200);
+    }, 3600);
   });
 })();
 </script>
