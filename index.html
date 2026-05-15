@@ -1,577 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Michi 🎂</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Comic Sans MS', 'Arial', sans-serif;
-            overflow: hidden;
-        }
-
-        .container {
-            position: relative;
-            width: 450px;
-            height: 600px;
-            perspective: 1000px;
-        }
-
-        .cake-wrapper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .cake-wrapper:hover {
-            transform: scale(1.05);
-        }
-
-        /* Multi-layer cake base */
-        .cake-base {
-            position: absolute;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 280px;
-            height: 180px;
-            background: linear-gradient(135deg, #f8b195 0%, #c9985f 50%, #f8b195 100%);
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 
-                        inset -3px -3px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Cake layer 2 */
-        .cake-layer-2 {
-            position: absolute;
-            bottom: 120px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 220px;
-            height: 60px;
-            background: linear-gradient(135deg, #f5deb3 0%, #daa520 50%, #f5deb3 100%);
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Cake layer 3 (top) */
-        .cake-layer-3 {
-            position: absolute;
-            bottom: 160px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 160px;
-            height: 50px;
-            background: linear-gradient(135deg, #ffe4b5 0%, #ffb347 50%, #ffe4b5 100%);
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Cute frosting decoration */
-        .frosting-top {
-            position: absolute;
-            width: 100%;
-            height: 20px;
-            background: linear-gradient(to bottom, #ff69b4, #ffb6d9);
-            border-radius: 10px 10px 0 0;
-            box-shadow: inset 0 -3px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .frosting-swirl {
-            position: absolute;
-            width: 100%;
-            height: 15px;
-            background: linear-gradient(to bottom, #ffb6d9, #ffc0d9);
-            border-radius: 0 0 8px 8px;
-            box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.3);
-        }
-
-        /* Cute decorative cherries */
-        .cherries {
-            position: absolute;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            width: 100%;
-            z-index: 8;
-        }
-
-        .cherry {
-            width: 18px;
-            height: 18px;
-            background: radial-gradient(circle at 30% 30%, #ff1493, #c71585);
-            border-radius: 50%;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            animation: cherry-bounce 2s ease-in-out infinite;
-        }
-
-        .cherry:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .cherry:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes cherry-bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        /* Cute candles */
-        .candles {
-            position: absolute;
-            bottom: 180px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 30px;
-            z-index: 5;
-        }
-
-        .candle {
-            width: 12px;
-            height: 45px;
-            background: linear-gradient(to bottom, #ffd700, #ffed4e);
-            border-radius: 50% 50% 15% 15%;
-            box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 215, 0, 0.5);
-            position: relative;
-        }
-
-        .flame {
-            position: absolute;
-            width: 10px;
-            height: 22px;
-            background: linear-gradient(to top, #ff6347, #ffff00, #ff8c00);
-            border-radius: 50% 50% 40% 40%;
-            bottom: 45px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: flicker 0.4s ease-in-out infinite;
-            box-shadow: 0 0 15px rgba(255, 99, 71, 0.9), 0 0 8px rgba(255, 255, 0, 0.8);
-            filter: blur(0.5px);
-        }
-
-        .candle:nth-child(1) .flame {
-            animation-delay: 0s;
-        }
-
-        .candle:nth-child(2) .flame {
-            animation-delay: 0.1s;
-        }
-
-        .candle:nth-child(3) .flame {
-            animation-delay: 0.2s;
-        }
-
-        @keyframes flicker {
-            0%, 100% {
-                height: 22px;
-                opacity: 1;
-            }
-            50% {
-                height: 26px;
-                opacity: 0.85;
-            }
-        }
-
-        /* Cake lids with cute design */
-        .cake-lid-left {
-            position: absolute;
-            bottom: 160px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 130px;
-            height: 90px;
-            background: linear-gradient(135deg, #ffb6d9 0%, #ff69b4 100%);
-            border-radius: 12px 0 0 12px;
-            box-shadow: -8px 8px 25px rgba(0, 0, 0, 0.25);
-            transform-origin: right center;
-            animation: none;
-            z-index: 10;
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .cake-lid-right {
-            position: absolute;
-            bottom: 160px;
-            left: 50%;
-            width: 130px;
-            height: 90px;
-            background: linear-gradient(135deg, #ffb6d9 0%, #ff69b4 100%);
-            border-radius: 0 12px 12px 0;
-            box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.25);
-            transform-origin: left center;
-            animation: none;
-            z-index: 10;
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .cake-lid-left.open {
-            transform: translateX(-50%) rotateY(-90deg);
-        }
-
-        .cake-lid-right.open {
-            transform: translateX(-50%) rotateY(90deg);
-        }
-
-        /* Cute heart decorations on lids */
-        .heart-deco {
-            position: absolute;
-            font-size: 1.8em;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: heart-pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heart-pulse {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(1);
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.15);
-            }
-        }
-
-        /* Message box */
-        .message-box {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0) rotateZ(-20deg);
-            text-align: center;
-            z-index: 20;
-            animation: none;
-        }
-
-        .message-box.show {
-            animation: pop-up-cute 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-        }
-
-        @keyframes pop-up-cute {
-            0% {
-                transform: translate(-50%, -50%) scale(0) rotateZ(-20deg);
-                opacity: 0;
-            }
-            60% {
-                transform: translate(-50%, -50%) scale(1.15) rotateZ(8deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1) rotateZ(0deg);
-                opacity: 1;
-            }
-        }
-
-        .birthday-text {
-            font-size: 3em;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), 
-                         0 0 25px rgba(255, 20, 147, 1);
-            letter-spacing: 1px;
-            animation: text-glow-cute 1s ease-in-out infinite alternate;
-        }
-
-        .name-text {
-            font-size: 2.8em;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ffeb3b, #ff69b4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 15px;
-            animation: text-glow-name 1s ease-in-out infinite alternate;
-        }
-
-        @keyframes text-glow-cute {
-            from {
-                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), 
-                            0 0 20px rgba(255, 20, 147, 0.8);
-            }
-            to {
-                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), 
-                            0 0 40px rgba(255, 20, 147, 1);
-            }
-        }
-
-        @keyframes text-glow-name {
-            from {
-                opacity: 0.9;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Confetti */
-        .confetti {
-            position: fixed;
-            pointer-events: none;
-            z-index: 15;
-        }
-
-        /* Click instruction */
-        .instruction {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 1.3em;
-            text-align: center;
-            animation: bounce-cute 2s ease-in-out infinite;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            font-weight: bold;
-        }
-
-        @keyframes bounce-cute {
-            0%, 100% {
-                transform: translateX(-50%) translateY(0) rotateZ(0deg);
-            }
-            25% {
-                transform: translateX(-50%) translateY(-15px) rotateZ(-5deg);
-            }
-            75% {
-                transform: translateX(-50%) translateY(-15px) rotateZ(5deg);
-            }
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* Sparkles background */
-        .sparkle {
-            position: fixed;
-            pointer-events: none;
-            z-index: 3;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buon Compleanno Michi</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:#0a0812;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',Georgia,serif;overflow:hidden}
+.bday-wrap{min-height:680px;width:100%;display:flex;align-items:center;justify-content:center;position:relative}
+.stars-layer{position:absolute;inset:0;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle var(--d,3s) ease-in-out infinite var(--dl,0s);opacity:.2}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:1;transform:scale(1.6)}}
+.scene{position:relative;z-index:1;width:420px;display:flex;flex-direction:column;align-items:center;padding:44px 20px 56px}
+.top-orn{color:#c9a96e;font-size:20px;letter-spacing:16px;margin-bottom:26px;animation:fadeD 1s ease both .3s;opacity:0}
+.greeting-lbl{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:8px;animation:fadeD 1s ease both .5s;opacity:0}
+.name-wrap{text-align:center;margin-bottom:4px;animation:fadeD 1.2s ease both .8s;opacity:0}
+.name{font-family:'Playfair Display',serif;font-size:80px;font-weight:700;color:#fff;line-height:1;text-shadow:0 0 80px rgba(201,169,110,.35)}
+.name-line{display:block;width:100%;height:1px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);margin:14px auto 0}
+.subtitle{font-style:italic;font-weight:300;font-size:17px;color:rgba(255,255,255,.5);letter-spacing:3px;margin-top:13px;animation:fadeD 1s ease both 1.1s;opacity:0}
+.div-row{display:flex;align-items:center;gap:12px;margin:26px 0 22px;animation:fadeD 1s ease both 1.3s;opacity:0}
+.div-line{flex:1;height:1px}
+.div-line:first-child{background:linear-gradient(90deg,transparent,rgba(201,169,110,.5))}
+.div-line:last-child{background:linear-gradient(90deg,rgba(201,169,110,.5),transparent)}
+.div-diamond{width:6px;height:6px;background:#c9a96e;transform:rotate(45deg)}
+@keyframes fadeD{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeU{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.cake-area{position:relative;width:230px;height:210px;cursor:pointer;animation:fadeU 1.2s ease both 1.5s;opacity:0}
+.plate{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:14px;background:#2a2010;border-radius:50%}
+.tier{position:absolute;left:50%;transform:translateX(-50%);border-radius:7px}
+.t1{bottom:12px;width:182px;height:68px;background:#1f1508}
+.t2{bottom:76px;width:138px;height:56px;background:#1f1508}
+.t3{bottom:128px;width:94px;height:44px;background:#1f1508}
+.frost{position:absolute;top:0;left:0;right:0;height:11px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#c9a96e,#9e7d47)}
+.gband{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.6),transparent)}
+.drip{position:absolute;top:9px;width:9px;height:18px;background:#c9a96e;border-radius:0 0 50% 50%}
+.candle-row{position:absolute;bottom:170px;left:50%;transform:translateX(-50%);display:flex;gap:16px;z-index:10}
+.candle{position:relative;width:8px;height:34px;border-radius:3px 3px 2px 2px}
+.ca{background:linear-gradient(180deg,#e8d5b0,#c4a870)}
+.cb{background:linear-gradient(180deg,#d4b896,#a67c52)}
+.cc{background:linear-gradient(180deg,#f0e0c0,#d4aa70)}
+.flame{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:8px;height:14px;background:radial-gradient(ellipse at 50% 80%,#fff7e0 0%,#ffcc44 30%,#ff8800 60%,transparent 100%);border-radius:50% 50% 40% 40%;animation:flicker var(--fd,.5s) ease-in-out infinite alternate}
+.glow-ring{position:absolute;bottom:calc(100% - 2px);left:50%;transform:translateX(-50%);width:20px;height:20px;background:radial-gradient(circle,rgba(255,180,0,.5) 0%,transparent 70%);border-radius:50%;animation:glowP var(--fd,.5s) ease-in-out infinite alternate}
+@keyframes flicker{from{transform:translateX(-50%) scaleX(1) scaleY(1)}to{transform:translateX(-50%) scaleX(.85) scaleY(1.1) skewX(4deg)}}
+@keyframes glowP{from{opacity:.5;transform:translateX(-50%) scale(1)}to{opacity:1;transform:translateX(-50%) scale(1.4)}}
+.hint{position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:2px;color:rgba(201,169,110,.6);text-transform:uppercase;white-space:nowrap;animation:breathe 2s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.5}50%{opacity:1}}
+.smoke{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:6px;height:22px;background:linear-gradient(to top,rgba(255,255,255,.25),transparent);border-radius:50%;animation:smokeUp 1.8s ease-out forwards}
+@keyframes smokeUp{0%{opacity:1;transform:translateX(-50%) translateY(0) scaleX(1)}100%{opacity:0;transform:translateX(-50%) translateY(-36px) scaleX(3)}}
+.msg-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:50;opacity:0;transition:opacity .9s ease}
+.msg-overlay.visible{opacity:1;pointer-events:all}
+.msg-card{text-align:center;padding:0 20px}
+.msg-birthday{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:14px}
+.msg-name{font-family:'Playfair Display',serif;font-size:72px;font-weight:700;color:#fff;line-height:1;text-shadow:0 0 60px rgba(201,169,110,.5),0 0 120px rgba(201,169,110,.2)}
+.msg-wish{font-style:italic;font-weight:300;font-size:16px;color:rgba(255,255,255,.55);letter-spacing:1px;line-height:1.9;margin-top:16px}
+.msg-wish em{font-style:normal;color:#c9a96e}
+.msg-line{display:block;width:120px;height:1px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);margin:18px auto 0}
+.particle{position:absolute;border-radius:50%;pointer-events:none;animation:burst var(--dur,1.2s) ease-out forwards}
+@keyframes burst{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.2)}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="instruction" id="instruction">Click the cake to open it! ✨💕</div>
-        
-        <div class="cake-wrapper" id="cakeWrapper">
-            <!-- Candles -->
-            <div class="candles">
-                <div class="candle">
-                    <div class="flame"></div>
-                </div>
-                <div class="candle">
-                    <div class="flame"></div>
-                </div>
-                <div class="candle">
-                    <div class="flame"></div>
-                </div>
-            </div>
+<div class="bday-wrap" id="wrap">
+  <div class="stars-layer" id="starsLayer"></div>
 
-            <!-- Cake lids -->
-            <div class="cake-lid-left" id="lidLeft">
-                <div class="heart-deco">💕</div>
-            </div>
-            <div class="cake-lid-right" id="lidRight">
-                <div class="heart-deco">💕</div>
-            </div>
-
-            <!-- Top layer -->
-            <div class="cake-layer-3">
-                <div class="frosting-top"></div>
-                <div class="cherries">
-                    <div class="cherry"></div>
-                    <div class="cherry"></div>
-                    <div class="cherry"></div>
-                </div>
-            </div>
-
-            <!-- Middle layer -->
-            <div class="cake-layer-2">
-                <div class="frosting-swirl"></div>
-            </div>
-
-            <!-- Base layer -->
-            <div class="cake-base">
-                <div class="frosting-top" style="background: linear-gradient(to bottom, #ffb6d9, #ff69b4);"></div>
-            </div>
-
-            <!-- Message -->
-            <div class="message-box" id="messageBox">
-                <div class="birthday-text">🎉 Happy Birthday 🎉</div>
-                <div class="name-text">Michi</div>
-            </div>
-        </div>
+  <div class="scene" id="mainScene">
+    <div class="top-orn">— ✦ —</div>
+    <div class="greeting-lbl">Tanti auguri</div>
+    <div class="name-wrap">
+      <span class="name">Michi</span>
+      <span class="name-line"></span>
+    </div>
+    <div class="subtitle">con tutto il cuore</div>
+    <div class="div-row">
+      <div class="div-line"></div>
+      <div class="div-diamond"></div>
+      <div class="div-line"></div>
     </div>
 
-    <script>
-        const cakeWrapper = document.getElementById('cakeWrapper');
-        const instruction = document.getElementById('instruction');
-        const lidLeft = document.getElementById('lidLeft');
-        const lidRight = document.getElementById('lidRight');
-        const messageBox = document.getElementById('messageBox');
-        let hasOpened = false;
+    <div class="cake-area" id="cakeArea">
+      <div class="candle-row">
+        <div class="candle ca" id="cn0"><div class="glow-ring" style="--fd:.45s"></div><div class="flame" style="--fd:.45s"></div></div>
+        <div class="candle cb" id="cn1"><div class="glow-ring" style="--fd:.55s"></div><div class="flame" style="--fd:.55s"></div></div>
+        <div class="candle cc" id="cn2"><div class="glow-ring" style="--fd:.5s"></div><div class="flame" style="--fd:.5s"></div></div>
+      </div>
+      <div class="tier t3">
+        <div class="frost"></div>
+        <div class="gband" style="top:13px"></div>
+        <div class="drip" style="left:12px"></div>
+        <div class="drip" style="left:36px"></div>
+        <div class="drip" style="left:60px"></div>
+      </div>
+      <div class="tier t2">
+        <div class="frost"></div>
+        <div class="gband" style="top:13px"></div>
+        <div class="gband" style="top:34px;opacity:.35"></div>
+        <div class="drip" style="left:8px"></div>
+        <div class="drip" style="left:32px"></div>
+        <div class="drip" style="left:58px"></div>
+        <div class="drip" style="left:84px"></div>
+        <div class="drip" style="left:110px"></div>
+      </div>
+      <div class="tier t1">
+        <div class="frost"></div>
+        <div class="gband" style="top:13px"></div>
+        <div class="gband" style="top:40px;opacity:.28"></div>
+        <div class="drip" style="left:6px"></div>
+        <div class="drip" style="left:28px"></div>
+        <div class="drip" style="left:52px"></div>
+        <div class="drip" style="left:76px"></div>
+        <div class="drip" style="left:102px"></div>
+        <div class="drip" style="left:128px"></div>
+        <div class="drip" style="left:156px"></div>
+      </div>
+      <div class="plate"></div>
+      <div class="hint" id="hintTxt">soffia le candeline ✦</div>
+    </div>
+  </div>
 
-        cakeWrapper.addEventListener('click', function() {
-            if (!hasOpened) {
-                hasOpened = true;
-                instruction.classList.add('hidden');
-                
-                // Open cake lids
-                lidLeft.classList.add('open');
-                lidRight.classList.add('open');
-                
-                // Show message after lids open
-                setTimeout(() => {
-                    messageBox.classList.add('show');
-                }, 400);
-                
-                // Create confetti
-                setTimeout(createConfetti, 300);
-                
-                // Play cute sound
-                playSound();
-                
-                // Create sparkles
-                createSparkles();
-            }
-        });
+  <div class="msg-overlay" id="msgOverlay">
+    <div class="msg-card">
+      <div class="msg-birthday">Buon compleanno</div>
+      <div class="msg-name">Michi</div>
+      <span class="msg-line"></span>
+      <div class="msg-wish">
+        Che ogni tuo desiderio<br>
+        si avveri come <em>magia</em>,<br>
+        e che questo anno sia il più <em>bello</em> di tutti.
+      </div>
+    </div>
+  </div>
+</div>
 
-        function createConfetti() {
-            const colors = ['#ff69b4', '#ffd700', '#00bfff', '#ffb6d9', '#ff1493', '#ffeb3b'];
-            const shapes = ['circle', 'star', 'heart'];
-            
-            for (let i = 0; i < 80; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                
-                const size = Math.random() * 12 + 6;
-                confetti.style.width = size + 'px';
-                confetti.style.height = size + 'px';
-                
-                const shape = shapes[Math.floor(Math.random() * shapes.length)];
-                if (shape === 'circle') {
-                    confetti.style.borderRadius = '50%';
-                } else if (shape === 'star') {
-                    confetti.textContent = '⭐';
-                    confetti.style.fontSize = size + 'px';
-                } else if (shape === 'heart') {
-                    confetti.textContent = '💖';
-                    confetti.style.fontSize = (size + 2) + 'px';
-                }
-                
-                const duration = Math.random() * 2.5 + 2;
-                const delay = Math.random() * 0.4;
-                
-                confetti.style.animation = `fall ${duration}s linear ${delay}s forwards`;
-                document.body.appendChild(confetti);
-                
-                setTimeout(() => confetti.remove(), (duration + delay) * 1000);
-            }
-        }
+<script>
+(function(){
+  const starsLayer = document.getElementById('starsLayer');
+  for(let i=0;i<90;i++){
+    const s=document.createElement('div');
+    s.className='star';
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--dl:${Math.random()*4}s;width:${Math.random()>.7?3:2}px;height:${Math.random()>.7?3:2}px`;
+    starsLayer.appendChild(s);
+  }
 
-        function createSparkles() {
-            const sparkleChars = ['✨', '💫', '⭐', '🌟'];
-            
-            for (let i = 0; i < 30; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.classList.add('sparkle');
-                sparkle.textContent = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
-                sparkle.style.left = Math.random() * 100 + '%';
-                sparkle.style.top = Math.random() * 100 + '%';
-                sparkle.style.fontSize = Math.random() * 1.5 + 1 + 'em';
-                
-                const duration = Math.random() * 2 + 1;
-                const delay = Math.random() * 0.3;
-                
-                sparkle.style.animation = `sparkle ${duration}s ease-in-out ${delay}s forwards`;
-                document.body.appendChild(sparkle);
-                
-                setTimeout(() => sparkle.remove(), (duration + delay) * 1000);
-            }
-        }
+  const cakeArea=document.getElementById('cakeArea');
+  const hint=document.getElementById('hintTxt');
+  const overlay=document.getElementById('msgOverlay');
+  const wrap=document.getElementById('wrap');
+  let done=false;
 
-        function playSound() {
-            try {
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                const now = audioContext.currentTime;
-                
-                // Cute melody
-                const notes = [
-                    { freq: 523, time: 0 },      // C5
-                    { freq: 659, time: 0.15 },   // E5
-                    { freq: 784, time: 0.3 },    // G5
-                    { freq: 880, time: 0.45 },   // A5
-                    { freq: 784, time: 0.6 }     // G5
-                ];
-                
-                notes.forEach(note => {
-                    const osc = audioContext.createOscillator();
-                    const gain = audioContext.createGain();
-                    osc.connect(gain);
-                    gain.connect(audioContext.destination);
-                    
-                    osc.frequency.value = note.freq;
-                    osc.type = 'sine';
-                    
-                    gain.gain.setValueAtTime(0.2, now + note.time);
-                    gain.gain.exponentialRampToValueAtTime(0.01, now + note.time + 0.25);
-                    
-                    osc.start(now + note.time);
-                    osc.stop(now + note.time + 0.25);
-                });
-            } catch (e) {
-                // Audio not supported, silently continue
-            }
-        }
+  cakeArea.addEventListener('click',()=>{
+    if(done)return;
+    done=true;
+    hint.style.display='none';
 
-        // Add CSS animations for confetti and sparkles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fall {
-                to {
-                    transform: translateY(100vh) rotate(720deg);
-                    opacity: 0;
-                }
-            }
-            
-            @keyframes sparkle {
-                0% {
-                    opacity: 0;
-                    transform: scale(0) rotateZ(0deg);
-                }
-                50% {
-                    opacity: 1;
-                    transform: scale(1) rotateZ(180deg);
-                }
-                100% {
-                    opacity: 0;
-                    transform: scale(0) rotateZ(360deg) translateY(-30px);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+    [0,1,2].forEach((i)=>{
+      setTimeout(()=>{
+        const c=document.getElementById('cn'+i);
+        const f=c.querySelector('.flame');
+        const g=c.querySelector('.glow-ring');
+        if(f)f.remove();
+        if(g)g.remove();
+        const sm=document.createElement('div');
+        sm.className='smoke';
+        c.appendChild(sm);
+        setTimeout(()=>sm.remove(),1800);
+      },i*130);
+    });
+
+    const rect=cakeArea.getBoundingClientRect();
+    const wRect=wrap.getBoundingClientRect();
+    const cx=rect.left-wRect.left+rect.width/2;
+    const cy=rect.top-wRect.top+80;
+    const cols=['#c9a96e','#e8d5b0','#f0e0c0','#fff7e0','#a67c52','#ffffff','#ffd700'];
+    for(let i=0;i<55;i++){
+      const p=document.createElement('div');
+      p.className='particle';
+      const ang=Math.random()*Math.PI*2;
+      const dist=70+Math.random()*170;
+      const sz=3+Math.random()*5;
+      p.style.cssText=`left:${cx}px;top:${cy}px;width:${sz}px;height:${sz}px;background:${cols[Math.floor(Math.random()*cols.length)]};--tx:${Math.cos(ang)*dist}px;--ty:${Math.sin(ang)*dist}px;--dur:${.8+Math.random()*.8}s;animation-delay:${Math.random()*.15}s;position:absolute;z-index:40`;
+      wrap.appendChild(p);
+      setTimeout(()=>p.remove(),1800);
+    }
+
+    setTimeout(()=>{ overlay.classList.add('visible'); },750);
+  });
+})();
+</script>
 </body>
 </html>
